@@ -1,11 +1,14 @@
 "use client";
 import Logo from "./Logo";
 import { motion } from "framer-motion";
-import { useState } from "react";
 
-export default function HamBurger() {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function HamBurger({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   // Toggle menu open/close
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
@@ -15,7 +18,7 @@ export default function HamBurger() {
     <div className="w-full p-4 font-sans font-medium flex justify-between items-center tracking-[0.35em] ">
       <div className="flex w-[40vw] items-center">
         <Logo />
-        <div className="h-10 border-r border-home-primary mx-3"></div>
+        <div className="h-10 border-r border-home-primary mx-4"></div>
 
         {/* Smaller container */}
         <div className="h-8 w-20 overflow-hidden relative">
