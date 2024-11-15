@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        bitter: ["var(--font-bitter)", "serif"],
+        bitter_italics: ["var(--font-bitter-italics)", "serif"],
+      },
     },
   },
   plugins: [],
