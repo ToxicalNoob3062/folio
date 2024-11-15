@@ -9,8 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        home: {
+          bg: "#f4f9fc",
+          primary: "#0f1b61",
+          secondary: "#aadcec",
+          lining: "#7f00e0",
+        },
       },
       fontFamily: {
         bitter: ["var(--font-bitter)", "serif"],

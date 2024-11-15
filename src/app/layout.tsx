@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import Footer from "@/components/common/Footer";
+import HamBurger from "@/components/common/Ham";
+
 const bitter = localFont({
   src: "./fonts/Bitter.ttf",
   variable: "--font-bitter",
@@ -26,9 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter`}
+        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter p-3`}
       >
-        {children}
+        <div className="bg-home-bg text-home-primary">
+          <HamBurger />
+          <div className="h-[100vh]">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
