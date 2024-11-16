@@ -44,7 +44,7 @@ export default function RootLayout({
             <Navbar />
           </motion.div>
         ) : (
-          <div className={`bg-${route}-bg flex-grow overflow-scroll`}>
+          <div className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}>
             {children}
             <Footer />
           </div>

@@ -4,41 +4,54 @@
 
 /* Default font size (mobile-first approach) */
 html {
-    font-size: 14px; /* Base size for smaller screens */
+  font-size: 14px; /* Base size for smaller screens */
 }
 
 /* Breakpoints for scaling font sizes */
 @media (min-width: 640px) {
-    /* sm */
-    html {
-        font-size: 15px;
-    }
+  /* sm */
+  html {
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 768px) {
-    /* md */
-    html {
-        font-size: 16px;
-    }
+  /* md */
+  html {
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 1024px) {
-    /* lg */
-    html {
-        font-size: 17px;
-    }
+  /* lg */
+  html {
+    font-size: 17px;
+  }
 }
 
 @media (min-width: 1280px) {
-    /* xl */
-    html {
-        font-size: 18px;
-    }
+  /* xl */
+  html {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1536px) {
-    /* 2xl */
-    html {
-        font-size: 20px;
-    }
+  /* 2xl */
+  html {
+    font-size: 20px;
+  }
+}
+
+/* globals.css */
+
+.hide-bars {
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hide-bars::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
