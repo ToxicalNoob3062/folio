@@ -25,7 +25,7 @@ export default function HamBurger({
         <div className="h-10 border-r border-home-primary mx-4"></div>
 
         {/* Smaller container */}
-        <div className="h-8 w-20 overflow-hidden relative">
+        <div className="h-8 w-20 overflow-hidden relative cursor-pointer">
           {/* Sliding element */}
           <motion.div
             className="absolute top-0 left-0 w-full"
@@ -38,7 +38,7 @@ export default function HamBurger({
           >
             <h2
               onClick={handleMenuClick}
-              className="h-8 w-auto flex items-center justify-center "
+              className="h-8 w-auto flex items-center justify-center"
             >
               CLOSE
             </h2>
@@ -53,7 +53,7 @@ export default function HamBurger({
       </div>
 
       {/* Hire Me Text */}
-      <h2>HIRE ME</h2>
+      <h2 className="cursor-pointer">HIRE ME</h2>
     </div>
   );
 }
