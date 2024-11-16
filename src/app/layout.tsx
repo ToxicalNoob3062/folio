@@ -27,39 +27,28 @@ export default function RootLayout({
   const [isOpen, setIsOpen] = useState(false);
   let route = usePathname().split("/")[0];
   route = route === "" ? "home" : route;
-  const duration = isOpen ? 0.5 : 0;
   const bg = isOpen ? `bg-${route}-secondary` : `bg-${route}-bg`;
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3`}
+        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 flex flex-col`}
       >
-        <div className={`w-full h-full bg-${route}-bg`}>
+        <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} bgColour={bg} />
+        {isOpen ? (
           <motion.div
-            className={`${bg} text-${route}-primary w-full overflow-hidden`}
-            initial={{ height: "30%" }} // Collapse height when closed
-            animate={{
-              height: isOpen ? "100%" : "30%", // Animate height based on isOpen state
-            }}
-            transition={{
-              duration,
-              ease: [0.42, 0, 0.58, 1], // Smooth transition
-            }}
+            className={`w-full h-full bg-${route}-secondary`}
+            initial={{ height: "0%" }}
+            animate={{ height: "100%" }}
+            transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            {/* Rendering HamBurger first to ensure state is maintained */}
-            <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} />
-
-            {/* Conditionally render Navbar or children based on the isOpen state */}
-            {isOpen ? (
-              <Navbar />
-            ) : (
-              <>
-                {children}
-                <Footer />
-              </>
-            )}
+            <Navbar />
           </motion.div>
-        </div>
+        ) : (
+          <div className={`bg-${route}-bg flex-grow overflow-scroll`}>
+            {children}
+            <Footer />
+          </div>
+        )}
       </body>
     </html>
   );

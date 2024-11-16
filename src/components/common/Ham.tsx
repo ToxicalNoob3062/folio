@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 export default function HamBurger({
   isOpen,
   setIsOpen,
+  bgColour,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  bgColour: string;
 }) {
   // Toggle menu open/close
   const handleMenuClick = () => {
@@ -15,7 +17,9 @@ export default function HamBurger({
   };
 
   return (
-    <div className="w-full p-4 font-sans font-medium flex justify-between items-center tracking-[0.35em] ">
+    <div
+      className={`w-full p-4 font-sans font-medium flex justify-between items-center tracking-[0.35em] ${bgColour}`}
+    >
       <div className="flex w-[40vw] items-center">
         <Logo />
         <div className="h-10 border-r border-home-primary mx-4"></div>
