@@ -22,7 +22,7 @@ const generateSafelist = (
 
 const extendedColors = {
   home: {
-    bg: "#f4f9fc",
+    bg: "#e0eff6",
     primary: "#0f1b61",
     secondary: "#aadcec",
     lining: "#7f00e0",
