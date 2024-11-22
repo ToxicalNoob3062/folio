@@ -19,7 +19,6 @@ const itemVariants = {
 };
 
 export default function Navbar({ route }: { route: string }) {
-  const text_colour = `text-${route}-primary`;
   return (
     <motion.div
       className="w-full flex flex-col h-full"
@@ -27,13 +26,13 @@ export default function Navbar({ route }: { route: string }) {
       animate="visible"
       variants={containerVariants}
     >
-      <SocialBar color={route} />
+      <SocialBar route={route} />
       <div className="flex flex-col p-8 flex-grow gap-20">
         {
           // Navigation links
           ["home", "work", "about", "writing"].map((route) => (
             <motion.div key={route} variants={itemVariants}>
-              <NavLink path={route} color={text_colour} />
+              <NavLink path={route} />
             </motion.div>
           ))
         }

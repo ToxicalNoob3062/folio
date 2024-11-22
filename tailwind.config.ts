@@ -8,9 +8,13 @@ const generateSafelist = (
     if (typeof shades === "object") {
       for (const shade in shades) {
         safelist.push(`bg-${colorName}-${shade}`);
+        safelist.push(`text-${colorName}-${shade}`);
+        safelist.push(`border-${colorName}-${shade}`);
       }
     } else {
       safelist.push(`bg-${colorName}`);
+      safelist.push(`text-${colorName}`);
+      safelist.push(`border-${colorName}`);
     }
   }
   return safelist;

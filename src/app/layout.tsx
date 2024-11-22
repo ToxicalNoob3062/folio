@@ -28,13 +28,13 @@ export default function RootLayout({
   let route = usePathname().split("/")[0];
   route = route === "" ? "home" : route;
   console.log(route);
-  const bg = isOpen ? `bg-${route}-secondary` : `bg-${route}-bg`;
+
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 flex flex-col`}
+        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 flex flex-col text-${route}-primary`}
       >
-        <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} bgColour={bg} />
+        <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} route={route} />
         {isOpen ? (
           <motion.div
             className={`w-full h-full bg-${route}-secondary`}

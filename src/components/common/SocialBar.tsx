@@ -17,7 +17,7 @@ const itemVariants = {
   visible: { opacity: 1, x: 0 },
 };
 
-export default function SocialBar({ color }: { color: string }) {
+export default function SocialBar({ route }: { route: string }) {
   const socials = ["github", "linkedin", "facebook", "email"];
   return (
     <motion.div
@@ -30,7 +30,7 @@ export default function SocialBar({ color }: { color: string }) {
         initial={{ x: "50vw" }}
         animate={{ x: "0" }}
         transition={{ duration: 0.25 }}
-        className={`border-t-4 border-${color}-lining w-20`}
+        className={`border-t-4 border-${route}-lining w-20`}
       ></motion.div>
       <div className="flex items-center gap-4">
         {socials.map((social) => (
