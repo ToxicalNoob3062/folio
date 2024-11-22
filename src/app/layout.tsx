@@ -27,6 +27,7 @@ export default function RootLayout({
   const [isOpen, setIsOpen] = useState(false);
   let route = usePathname().split("/")[0];
   route = route === "" ? "home" : route;
+  console.log(route);
   const bg = isOpen ? `bg-${route}-secondary` : `bg-${route}-bg`;
   return (
     <html lang="en">
@@ -41,7 +42,7 @@ export default function RootLayout({
             animate={{ height: "100%" }}
             transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <Navbar color={route} />
+            <Navbar route={route} />
           </motion.div>
         ) : (
           <div className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}>

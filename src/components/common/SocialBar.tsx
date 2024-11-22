@@ -24,7 +24,7 @@ export default function SocialBar({ color }: { color: string }) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex w-full p-4 py-6 items-center gap-4"
+      className="flex w-full p-6 items-center gap-4"
     >
       <motion.div
         initial={{ x: "50vw" }}
