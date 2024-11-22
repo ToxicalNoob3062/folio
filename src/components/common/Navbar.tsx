@@ -1,3 +1,9 @@
-export default function Navbar() {
-  return <div>I am nav elements.</div>;
+import SocialBar from "./SocialBar";
+
+export default function Navbar({ color }: { color: string }) {
+  return (
+    <div className="w-full">
+      <SocialBar color={color} />
+    </div>
+  );
 }

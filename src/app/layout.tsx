@@ -41,7 +41,7 @@ export default function RootLayout({
             animate={{ height: "100%" }}
             transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
-            <Navbar />
+            <Navbar color={route} />
           </motion.div>
         ) : (
           <div className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}>

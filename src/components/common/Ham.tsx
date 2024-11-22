@@ -18,7 +18,7 @@ export default function HamBurger({
 
   return (
     <div
-      className={`w-full p-4 font-sans font-medium flex justify-between items-center tracking-[0.35em] ${bgColour}`}
+      className={`w-full p-6 font-sans font-medium flex justify-between items-center tracking-[0.35em] ${bgColour}`}
     >
       <div className="flex w-[40vw] items-center">
         <Logo />
@@ -32,7 +32,7 @@ export default function HamBurger({
             initial={{ y: "-2rem" }} // Start position
             animate={{ y: isOpen ? "0rem" : "-2rem" }} // Slide up or down
             transition={{
-              duration: 0.25, // Animation duration
+              duration: 0.2, // Animation duration
               ease: [0.175, 0.885, 0.32, 1.3], // Cubic-bezier easing
             }}
           >
