@@ -18,7 +18,13 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export default function Navbar({ route }: { route: string }) {
+export default function Navbar({
+  route,
+  setIsOpen,
+}: {
+  route: string;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <motion.div
       className="w-full flex flex-col h-full"
@@ -32,7 +38,7 @@ export default function Navbar({ route }: { route: string }) {
           // Navigation links
           ["home", "work", "about", "writing"].map((route) => (
             <motion.div key={route} variants={itemVariants}>
-              <NavLink path={route} />
+              <NavLink path={route} setIsOpen={setIsOpen} />
             </motion.div>
           ))
         }
