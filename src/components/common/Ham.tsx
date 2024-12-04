@@ -22,7 +22,7 @@ export default function HamBurger({
       className={`w-full p-6 font-sans font-medium flex justify-between items-center tracking-[0.35em] ${bg}`}
     >
       <div className="flex w-[40vw] items-center ">
-        <Logo />
+        <Logo route={route} />
         <div className={`h-10 border-r border-${route}-primary mx-4`}></div>
 
         {/* Smaller container */}

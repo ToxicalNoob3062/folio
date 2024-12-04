@@ -25,9 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isOpen, setIsOpen] = useState(false);
-  let route = usePathname().split("/")[0];
+  let route = usePathname().split("/")[1];
   route = route === "" ? "home" : route;
-  console.log(route);
 
   return (
     <html lang="en">
