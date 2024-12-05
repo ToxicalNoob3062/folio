@@ -4,7 +4,7 @@ import "./globals.css";
 import { usePathname } from "next/navigation";
 import Footer from "@/components/common/Footer";
 import HamBurger from "@/components/common/Ham";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/common/Navbar";
 import { motion } from "framer-motion";
 
@@ -27,6 +27,7 @@ export default function RootLayout({
   const [isOpen, setIsOpen] = useState(false);
   let route = usePathname().split("/")[1];
   route = route === "" ? "home" : route;
+  const prevRoute = useRef(route);
 
   //track prev route
   const [routeChanged, setRouteChanged] = useState(false);
@@ -35,13 +36,20 @@ export default function RootLayout({
     console.log("route changed");
   }, [route]);
 
+  const routeTransitioned = !isOpen && routeChanged;
+
   return (
     <html lang="en">
       <body
         className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 text-${route}-primary`}
       >
         <div className="relative flex flex-col w-full h-full overflow-hidden">
-          <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} route={route} />
+          <HamBurger
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            route={route}
+            transitioned={routeTransitioned}
+          />
           {isOpen ? (
             <motion.div
               className={`w-full h-full bg-${route}-secondary`}
@@ -60,7 +68,7 @@ export default function RootLayout({
             </div>
           )}
 
-          {!isOpen && routeChanged ? (
+          {routeTransitioned ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -74,11 +82,12 @@ export default function RootLayout({
                 initial={{ top: "0%" }}
                 animate={{ top: "100%" }}
                 transition={{
-                  duration: 0.75,
-                  delay: 0.8,
+                  duration: 20,
                   ease: [0.25, 0.1, 0.25, 1.0],
                 }}
-                onAnimationComplete={() => setRouteChanged(false)}
+                onAnimationComplete={() => {
+                  setRouteChanged(false);
+                }}
               ></motion.div>
             </motion.div>
           ) : null}

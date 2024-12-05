@@ -11,11 +11,19 @@ const containerVariants = {
       staggerChildren: 0.25, // Stagger the appearance of each child
     },
   },
+  exit: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25, // Stagger the disappearance of each child
+      staggerDirection: -1, // Reverse the order of staggering
+    },
+  },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 20 },
 };
 
 export default function Navbar({
@@ -30,6 +38,7 @@ export default function Navbar({
       className="w-full flex flex-col h-full"
       initial="hidden"
       animate="visible"
+      exit="exit"
       variants={containerVariants}
     >
       <SocialBar route={route} />
