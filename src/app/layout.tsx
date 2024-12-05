@@ -44,12 +44,7 @@ export default function RootLayout({
         className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 text-${route}-primary`}
       >
         <div className="relative flex flex-col w-full h-full overflow-hidden">
-          <HamBurger
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            route={route}
-            transitioned={routeTransitioned}
-          />
+          <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} route={route} />
           {isOpen ? (
             <motion.div
               className={`w-full h-full bg-${route}-secondary`}
@@ -82,7 +77,7 @@ export default function RootLayout({
                 initial={{ top: "0%" }}
                 animate={{ top: "100%" }}
                 transition={{
-                  duration: 20,
+                  duration: 0.85,
                   ease: [0.25, 0.1, 0.25, 1.0],
                 }}
                 onAnimationComplete={() => {
