@@ -14,7 +14,7 @@ const containerVariants = {
   exit: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.25, // Stagger the disappearance of each child
+      staggerChildren: 0.1, // Stagger the disappearance of each child
       staggerDirection: -1, // Reverse the order of staggering
     },
   },

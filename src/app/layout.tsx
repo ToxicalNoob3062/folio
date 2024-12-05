@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import Footer from "@/components/common/Footer";
 import HamBurger from "@/components/common/Ham";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/common/Navbar";
-import { motion } from "framer-motion";
 
 const bitter = localFont({
   src: "./fonts/Bitter.ttf",
@@ -27,16 +27,21 @@ export default function RootLayout({
   const [isOpen, setIsOpen] = useState(false);
   let route = usePathname().split("/")[1];
   route = route === "" ? "home" : route;
-  const prevRoute = useRef(route);
+  const isFirstRender = useRef(true);
 
   //track prev route
   const [routeChanged, setRouteChanged] = useState(false);
   useEffect(() => {
-    setRouteChanged(true);
-    console.log("route changed");
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      setRouteChanged(true);
+      console.log("route changed");
+    }
   }, [route]);
 
-  const routeTransitioned = !isOpen && routeChanged;
+  const routeTransitioned = !isOpen && (routeChanged || isFirstRender.current);
+  console.log(routeChanged);
 
   return (
     <html lang="en">
@@ -45,31 +50,44 @@ export default function RootLayout({
       >
         <div className="relative flex flex-col w-full h-full overflow-hidden">
           <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} route={route} />
-          {isOpen ? (
-            <motion.div
-              className={`w-full h-full bg-${route}-secondary`}
-              initial={{ height: "0%" }}
-              animate={{ height: "100%" }}
-              transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1.0] }}
-            >
-              <Navbar route={route} setIsOpen={setIsOpen} />
-            </motion.div>
-          ) : (
-            <div
-              className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}
-            >
-              {children}
-              <Footer />
-            </div>
-          )}
-
+          <AnimatePresence>
+            {isOpen ? (
+              <motion.div
+                key="navwrap"
+                className={`w-full h-full bg-${route}-secondary`}
+                initial={{ height: "0%" }}
+                animate={{
+                  height: "100%",
+                  transition: { duration: 0.75, ease: [0.25, 0.1, 0.25, 1.0] },
+                }}
+                exit={
+                  routeChanged
+                    ? {
+                        delay: 0.4,
+                        opacity: 1,
+                      }
+                    : {}
+                }
+              >
+                <Navbar route={route} setIsOpen={setIsOpen} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="content"
+                className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}
+              >
+                {children}
+                <Footer />
+              </motion.div>
+            )}
+          </AnimatePresence>
           {routeTransitioned ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
-                delay: 0.75,
-                duration: 0.5,
+                delay: isFirstRender.current ? 0 : 0.5,
+                duration: isFirstRender.current ? 0 : 0.5,
               }}
             >
               <motion.div
@@ -77,8 +95,8 @@ export default function RootLayout({
                 initial={{ top: "0%" }}
                 animate={{ top: "100%" }}
                 transition={{
-                  duration: 0.9,
-                  delay: 0.8,
+                  duration: 0.75,
+                  delay: 0.5,
                   ease: [0.25, 0.1, 0.25, 1.0],
                 }}
                 onAnimationComplete={() => {
