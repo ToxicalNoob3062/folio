@@ -77,7 +77,8 @@ export default function RootLayout({
                 initial={{ top: "0%" }}
                 animate={{ top: "100%" }}
                 transition={{
-                  duration: 0.85,
+                  duration: 0.9,
+                  delay: 0.8,
                   ease: [0.25, 0.1, 0.25, 1.0],
                 }}
                 onAnimationComplete={() => {
