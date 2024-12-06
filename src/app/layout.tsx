@@ -19,38 +19,66 @@ const bitterItalics = localFont({
   weight: "100 900",
 });
 
+let prev = "home";
+let temp = "home";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  //check if navigation is open
   const [isOpen, setIsOpen] = useState(false);
+
+  //get the route from the pathname
   let route = usePathname().split("/")[1];
   route = route === "" ? "home" : route;
+
+  //check if it's the first render
   const isFirstRender = useRef(true);
 
-  //track prev route
+  // Track previous route
   const [routeChanged, setRouteChanged] = useState(false);
+  const [showContent, setShowContent] = useState(true);
+
+  // Check if route has changed and track previous route
+  if (temp !== route) {
+    setRouteChanged(true);
+    prev = temp;
+    temp = route;
+  }
+  // a state when the isOpen is false and the route has changed
+  const routeTransitioned = !isOpen && routeChanged;
+
+  // useEffect to check if it's the first render and reset the isFirstRender
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
-    } else {
-      setRouteChanged(true);
-      console.log("route changed");
+      return;
     }
-  }, [route]);
+  }, []);
 
-  const routeTransitioned = !isOpen && (routeChanged || isFirstRender.current);
-  console.log(routeChanged);
+  console.log(route, prev);
 
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 text-${route}-primary`}
+        className={`${bitter.variable} ${bitterItalics.variable} antialiased font-bitter w-[100vw] h-[100vh] p-3 flex flex-col text-${route}-primary`}
       >
         <div className="relative flex flex-col w-full h-full overflow-hidden">
-          <HamBurger isOpen={isOpen} setIsOpen={setIsOpen} route={route} />
-          <AnimatePresence>
+          <HamBurger
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            route={route}
+            transitioned={routeTransitioned}
+            p_bg={`bg-${prev}-secondary`}
+          />
+
+          <AnimatePresence
+            onExitComplete={() => {
+              setShowContent((prev) => !prev);
+            }}
+          >
             {isOpen ? (
               <motion.div
                 key="navwrap"
@@ -72,13 +100,16 @@ export default function RootLayout({
                 <Navbar route={route} setIsOpen={setIsOpen} />
               </motion.div>
             ) : (
-              <motion.div
-                key="content"
-                className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}
-              >
-                {children}
-                <Footer />
-              </motion.div>
+              !isOpen &&
+              showContent && (
+                <motion.div
+                  key="content"
+                  className={`bg-${route}-bg flex-grow overflow-scroll hide-bars`}
+                >
+                  {children}
+                  <Footer />
+                </motion.div>
+              )
             )}
           </AnimatePresence>
           {routeTransitioned ? (
