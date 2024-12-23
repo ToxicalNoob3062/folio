@@ -30,13 +30,18 @@ export default function Modal({
       if (routeStatus.past !== routeStatus.present) {
         const exitAnimation = async () => {
           // inavildate the nav bar
-          await animate(scope.current, { zIndex: 40 }, { duration: 0.25 });
+          await animate(scope.current, { zIndex: 40 }, { duration: 0.1 });
 
           // unstag all the child elements od scope
-          const children = Array.from(scope.current.children); //length:2
+          let children = Array.from(scope.current.children); //length:2
+          await new Promise((resolve) => setTimeout(resolve, 50));
+          await animate(children[0], { opacity: 0 }, { duration: 0.1 });
+
+          //now remove the opacity of children[1] childrens one by one
+          children = Array.from((children[1] as HTMLDivElement).children);
           for (let i = 0; i < children.length; i++) {
-            //await new Promise((resolve) => setTimeout(resolve, (i + 1) * 250)); // Add delay between animations
-            await animate(children[i], { opacity: 0 }, { duration: 0.25 });
+            await new Promise((resolve) => setTimeout(resolve, 50));
+            await animate(children[i], { opacity: 0 }, { duration: 0.1 });
           }
 
           //change background color
@@ -46,19 +51,20 @@ export default function Modal({
               backgroundColor:
                 extendedColors[routeStatus.present as Route].secondary,
             },
-            { duration: 0.75 }
+            { duration: 0.4 }
           );
 
           //slide down the nav bar
-          //await new Promise((resolve) => setTimeout(resolve, 750));
-          await animate(scope.current, { top: "100%" }, { duration: 0.5 });
+          await new Promise((resolve) => setTimeout(resolve, 400));
+          if (scope.current) {
+            await animate(scope.current, { top: "100%" }, { duration: 0.25 });
+          }
 
           // set the nav bar to be removed
           safeToRemove();
         };
         exitAnimation();
       } else {
-        console.log("safe to remove");
         safeToRemove();
       }
     }

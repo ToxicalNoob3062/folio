@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="">
-      <h1 className=" font-bold">About Section</h1>
+      <h1 className="font-bold mb-3 text-center">About Section</h1>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iste
       impedit facilis accusantium sed quaerat ducimus vitae magni harum, minima
       ipsa asperiores, laborum voluptatum, provident recusandae tempora
