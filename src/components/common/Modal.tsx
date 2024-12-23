@@ -55,7 +55,7 @@ export default function Modal({
           );
 
           //slide down the nav bar
-          await new Promise((resolve) => setTimeout(resolve, 400));
+          await new Promise((resolve) => setTimeout(resolve, 300));
           if (scope.current) {
             await animate(scope.current, { top: "100%" }, { duration: 0.25 });
           }
