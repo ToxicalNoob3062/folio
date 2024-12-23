@@ -20,7 +20,7 @@ const generateSafelist = (
   return safelist;
 };
 
-const extendedColors = {
+export const extendedColors = {
   home: {
     bg: "#f4f9fc",
     primary: "#0f1b61",
@@ -42,7 +42,7 @@ const extendedColors = {
   writing: {
     bg: "#fdfbf9",
     primary: "#47280b",
-    secondary: "#ffdaa5;",
+    secondary: "#ffdaa5",
     lining: "#ff5708",
   },
 };

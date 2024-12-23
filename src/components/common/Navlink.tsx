@@ -1,23 +1,29 @@
-import Link from "next/link";
+import { Route } from "@/data/routes";
+import { motion } from "framer-motion";
+
+const itemVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+  },
+};
 
 export default function NavLink({
   path,
-  setIsOpen,
+  changeRoute,
 }: {
   path: string;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  changeRoute: (newRoute: Route) => void;
 }) {
-  const route = path === "home" ? "/" : `/${path}`;
   return (
-    <h1 className={`font-bold text-5xl hover:text-white`}>
-      <Link
-        onClick={() => {
-          setIsOpen(false);
-        }}
-        href={route}
-      >
-        {path[0].toUpperCase() + path.slice(1)}
-      </Link>
-    </h1>
+    <motion.button
+      variants={itemVariants}
+      className="font-bold text-5xl hover:text-white"
+      onClick={() => {
+        changeRoute(path as Route);
+      }}
+    >
+      {path[0].toUpperCase() + path.slice(1)}
+    </motion.button>
   );
 }

@@ -46,10 +46,9 @@ html {
 /* globals.css */
 
 .hide-bars {
-  overflow: hidden;
-  overflow-y: scroll;
+  overflow: auto;
   scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  -ms-overflow-style: none; /* For IE and Edge */
 }
 
 .hide-bars::-webkit-scrollbar {
