@@ -41,7 +41,7 @@ export default function RootLayout({
           className={`bg-${route}-bg relative z-10 flex-grow flex flex-col overflow-hidden`}
         >
           <Header route={route} control={[isOpen, changeRoute]} />
-          <div className="flex-grow overflow-scroll hide-bars">
+          <div className="h-[100vh] hide-bars">
             {children}
             <Footer />
           </div>
