@@ -12,6 +12,7 @@ export default function Greeter({
   setReloaded: Dispatch<SetStateAction<boolean>>;
 }) {
   const { setCompletion } = useCompletion();
+
   return (
     <motion.div
       className={`bg-${route}-secondary absolute top-0 left-0 w-full h-full z-30 flex justify-center items-center`}

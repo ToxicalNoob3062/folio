@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
+import { useCompletion } from "@/context/CompletionContext";
 
 function getStripingStyle(
   color: string,
@@ -23,27 +24,78 @@ function getStripingStyle(
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
+  const { completion, setCompletion } = useCompletion();
   const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <>
       {/* hero section */}
       <div className="h-full flex flex-col items-center justify-center">
         <div>
-          <motion.div className="w-96 h-96 relative">
-            <Image
-              src={"/home-me.png"}
-              alt="cartoon img"
-              fill
-              className="object-contain relative z-20"
-            />
-            <div
-              className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/3 z-10"
-              style={getStripingStyle(color, 10, 10)}
-            ></div>
-          </motion.div>
-          <h1 className="text-center p-6 text-5xl">
+          <div className="w-96 h-96 relative z-0">
+            {/* Image Animation */}
+            {completion ? (
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }} // Ensure the image starts invisible and small
+                animate={
+                  { scale: [0, 1.2, 0.9, 1], opacity: [0, 1] } // Bounce effect with fade-in
+                }
+                transition={{
+                  duration: 0.8,
+                  ease: [0.17, 0.67, 0.83, 0.67], // Easing for bounce
+                }}
+                className="w-full h-full relative z-20" // Ensure image is always above
+              >
+                <Image
+                  src={"/home-me.png"}
+                  alt="cartoon img"
+                  fill
+                  className="object-contain relative"
+                />
+              </motion.div>
+            ) : (
+              <div
+                className="w-full h-full relative z-20" // Ensure image is always above
+              >
+                <Image
+                  src={"/home-me.png"}
+                  alt="cartoon img"
+                  fill
+                  className="object-contain relative"
+                />
+              </div>
+            )}
+
+            {/* Stripe Background Animation */}
+            {completion ? (
+              <motion.div
+                initial={
+                  completion
+                    ? { x: "-100%", y: "-33%", opacity: 0 }
+                    : { x: "50%", y: "-33%", opacity: 1 }
+                } // Start off-screen and invisible
+                animate={completion ? { x: "50%", y: "-33%", opacity: 1 } : {}}
+                transition={{
+                  duration: 1,
+                  delay: 0.5,
+                  ease: "easeInOut", // Smooth slide-in
+                }}
+                onAnimationComplete={() => {
+                  setCompletion(false); // Reset completion state after animation
+                }}
+                className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10" // Ensure stripe is below image
+                style={getStripingStyle(color, 10, 10)}
+              ></motion.div>
+            ) : (
+              <div
+                className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10 transform translate-x-1/2 -translate-y-1/3" // Ensure stripe is below image
+                style={getStripingStyle(color, 10, 10)}
+              ></div>
+            )}
+          </div>
+
+          <motion.h1 className="text-center p-6 text-5xl">
             Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
-          </h1>
+          </motion.h1>
         </div>
         <div className="flex-grow flex flex-col">
           <h4 className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4">
