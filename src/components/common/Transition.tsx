@@ -4,11 +4,13 @@ import { Route, routeStatus } from "@/data/routes";
 import { motion, useAnimate } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { extendedColors } from "../../../tailwind.config";
+import { useCompletion } from "@/context/CompletionContext";
 
 export default function Transition() {
   const router = useRouter();
   const { swapPage, setSwapPage } = useSwapPage();
   const [scope, animate] = useAnimate();
+  const { setCompletion } = useCompletion();
 
   return swapPage ? (
     <motion.div
@@ -33,6 +35,7 @@ export default function Transition() {
         await new Promise((resolve) => setTimeout(resolve, 300));
         await animate(scope.current, { top: "100%" }, { duration: 0.5 });
         setSwapPage(false);
+        setCompletion(true);
       }}
     ></motion.div>
   ) : null;

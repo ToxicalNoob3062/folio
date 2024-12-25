@@ -12,6 +12,7 @@ import Modal from "@/components/common/Modal";
 import Greeter from "@/components/common/Greeter";
 import Transition from "@/components/common/Transition";
 import { SwapPageProvider } from "@/context/TransitContext";
+import { CompletionProvider } from "@/context/CompletionContext";
 
 const bitter = localFont({
   src: "./fonts/Bitter.ttf",
@@ -46,17 +47,19 @@ export default function RootLayout({
         >
           <Header route={route} control={[isOpen, changeRoute]} />
           <SwapPageProvider>
-            <div className="h-[100vh] hide-bars">
-              {children}
-              <Footer />
-            </div>
-            <AnimatePresence>
-              <Transition key={"direct"} />
-              {reloaded ? (
-                <Greeter setReloaded={setReloaded} route={route} />
-              ) : null}
-              {isOpen ? <Modal changeRoute={changeRoute} /> : null}
-            </AnimatePresence>
+            <CompletionProvider>
+              <div className="h-[100vh] hide-bars">
+                {children}
+                <Footer />
+              </div>
+              <AnimatePresence>
+                <Transition key={"direct"} />
+                {reloaded ? (
+                  <Greeter setReloaded={setReloaded} route={route} />
+                ) : null}
+                {isOpen ? <Modal changeRoute={changeRoute} /> : null}
+              </AnimatePresence>
+            </CompletionProvider>
           </SwapPageProvider>
         </div>
       </body>

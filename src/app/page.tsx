@@ -28,26 +28,29 @@ export default function Home() {
     <>
       {/* hero section */}
       <div className="h-full flex flex-col items-center justify-center">
-        <motion.div className="w-96 h-96 relative">
-          <Image
-            src={"/home-me.png"}
-            alt="cartoon img"
-            fill
-            className="object-contain relative z-20"
-          />
-          <div
-            className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/3 z-10"
-            style={getStripingStyle(color, 10, 10)}
-          ></div>
-        </motion.div>
-        <h1 className="text-center p-6 text-5xl">
-          Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
-          <br />
-          <span className="font-semibold text-gray-400 text-base tracking-[0.3em]">
+        <div>
+          <motion.div className="w-96 h-96 relative">
+            <Image
+              src={"/home-me.png"}
+              alt="cartoon img"
+              fill
+              className="object-contain relative z-20"
+            />
+            <div
+              className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 transform translate-x-1/2 -translate-y-1/3 z-10"
+              style={getStripingStyle(color, 10, 10)}
+            ></div>
+          </motion.div>
+          <h1 className="text-center p-6 text-5xl">
+            Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
+          </h1>
+        </div>
+        <div className="flex-grow flex flex-col">
+          <h4 className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4">
             SCROLL
-          </span>
-        </h1>
-        <div className="border border-r border-home-primary flex-grow"></div>
+          </h4>
+          <div className="border-r border-home-primary flex-grow mt-2"></div>
+        </div>
       </div>
       {/* Call to action section */}
       <div className="flex-shrink-0 mt-28 p-6">

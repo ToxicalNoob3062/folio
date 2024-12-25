@@ -5,6 +5,7 @@ import { Route } from "@/data/routes";
 import { useEffect } from "react";
 import { routeStatus } from "@/data/routes";
 import { extendedColors } from "../../../tailwind.config";
+import { useCompletion } from "@/context/CompletionContext";
 
 const containerVariants = {
   hidden: { opacity: 1 },
@@ -23,6 +24,7 @@ export default function Modal({
   changeRoute: (newRoute: Route) => void;
 }) {
   const [isPresent, safeToRemove] = usePresence();
+  const { setCompletion } = useCompletion();
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
@@ -59,16 +61,16 @@ export default function Modal({
           if (scope.current) {
             await animate(scope.current, { top: "100%" }, { duration: 0.25 });
           }
-
           // set the nav bar to be removed
           safeToRemove();
+          setCompletion(true);
         };
         exitAnimation();
       } else {
         safeToRemove();
       }
     }
-  }, [isPresent, animate, safeToRemove, scope]);
+  }, [isPresent, animate, safeToRemove, setCompletion, scope]);
   return (
     <motion.div
       className={`bg-${routeStatus.present}-secondary absolute top-0 left-0 w-full h-full z-20 pt-20`}
