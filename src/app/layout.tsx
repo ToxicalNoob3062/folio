@@ -3,12 +3,15 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Route, routeStatus } from "@/data/routes";
+import { Route, updateRouteStatus } from "@/data/routes";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Modal from "@/components/common/Modal";
+import Greeter from "@/components/common/Greeter";
+import Transition from "@/components/common/Transition";
+import { SwapPageProvider } from "@/context/TransitContext";
 
 const bitter = localFont({
   src: "./fonts/Bitter.ttf",
@@ -23,11 +26,12 @@ export default function RootLayout({
 }>) {
   //check if navigation is open
   const [isOpen, setIsOpen] = useState(false);
+  const [reloaded, setReloaded] = useState(true);
   const router = useRouter();
   const route = (usePathname().split("/")[1] || "home") as Route;
+
   const changeRoute = (newRoute: Route) => {
-    routeStatus.past = route;
-    routeStatus.present = newRoute;
+    updateRouteStatus(newRoute);
     router.push(newRoute !== "home" ? `/${newRoute}` : `/`);
     setIsOpen((prev) => !prev);
   };
@@ -41,13 +45,19 @@ export default function RootLayout({
           className={`bg-${route}-bg relative z-10 flex-grow flex flex-col overflow-hidden`}
         >
           <Header route={route} control={[isOpen, changeRoute]} />
-          <div className="h-[100vh] hide-bars">
-            {children}
-            <Footer />
-          </div>
-          <AnimatePresence>
-            {isOpen ? <Modal changeRoute={changeRoute} /> : null}
-          </AnimatePresence>
+          <SwapPageProvider>
+            <div className="h-[100vh] hide-bars">
+              {children}
+              <Footer />
+            </div>
+            <AnimatePresence>
+              <Transition key={"direct"} />
+              {reloaded ? (
+                <Greeter setReloaded={setReloaded} route={route} />
+              ) : null}
+              {isOpen ? <Modal changeRoute={changeRoute} /> : null}
+            </AnimatePresence>
+          </SwapPageProvider>
         </div>
       </body>
     </html>

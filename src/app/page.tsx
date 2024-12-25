@@ -1,8 +1,9 @@
 "use client";
-import { Route, routeStatus } from "@/data/routes";
+import { Route, routeStatus, transitTo } from "@/data/routes";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
+import { useSwapPage } from "@/context/TransitContext";
 
 function getStripingStyle(
   color: string,
@@ -21,6 +22,7 @@ function getStripingStyle(
 }
 
 export default function Home() {
+  const { setSwapPage } = useSwapPage();
   const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <>
@@ -65,6 +67,7 @@ export default function Home() {
           nihil a, rem possimus fugit.
         </p>
         <button
+          onClick={() => transitTo("work", setSwapPage)}
           className="mt-8 py-3 px-6 border-2 border-home-lining text-home-lining rounded-lg text-xl font-bold"
           style={getStripingStyle(color, 4, 5)}
         >
