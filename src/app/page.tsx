@@ -33,7 +33,7 @@ export default function Home() {
         <div>
           <div className="w-96 h-96 relative z-0">
             {/* Image Animation */}
-            {completion ? (
+            {completion && (
               <motion.div
                 initial={{ scale: 0, opacity: 0 }} // Ensure the image starts invisible and small
                 animate={
@@ -54,25 +54,10 @@ export default function Home() {
                   priority
                 />
               </motion.div>
-            ) : (
-              <div
-                className={`w-full h-full relative z-20 ${
-                  !completion ? "opacity-0" : ""
-                }`}
-              >
-                <Image
-                  src={"/home-me.png"}
-                  alt="cartoon img"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
-                  className="object-contain relative"
-                  priority
-                />
-              </div>
             )}
 
             {/* Stripe Background Animation */}
-            {completion ? (
+            {completion && (
               <motion.div
                 initial={{ x: "-100%", y: "-33%", opacity: 0 }} // Start off-screen and invisible
                 animate={completion ? { x: "50%", y: "-33%", opacity: 1 } : {}}
@@ -87,13 +72,6 @@ export default function Home() {
                 className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10" // Ensure stripe is below image
                 style={getStripingStyle(color, 10, 10)}
               ></motion.div>
-            ) : (
-              <div
-                className={`w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10 transform translate-x-1/2 -translate-y-1/3 ${
-                  !completion ? "opacity-0" : ""
-                }`} // Ensure stripe is below image
-                style={getStripingStyle(color, 10, 10)}
-              ></div>
             )}
           </div>
 
