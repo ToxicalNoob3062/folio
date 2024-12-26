@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Route, updateRouteStatus } from "@/data/routes";
 import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Modal from "@/components/common/Modal";
@@ -13,6 +12,7 @@ import Greeter from "@/components/common/Greeter";
 import Transition from "@/components/common/Transition";
 import { SwapPageProvider } from "@/context/TransitContext";
 import { CompletionProvider } from "@/context/CompletionContext";
+import Footer from "@/components/common/Footer";
 
 const bitter = localFont({
   src: "./fonts/Bitter.ttf",
@@ -48,10 +48,11 @@ export default function RootLayout({
           <Header route={route} control={[isOpen, changeRoute]} />
           <SwapPageProvider>
             <CompletionProvider>
-              <div className="h-[100vh] hide-bars">
+              <div className="h-[100vh] hide-bars" id="display">
                 {children}
                 <Footer />
               </div>
+              {/* Page Route Transitioning Setup */}
               <AnimatePresence>
                 <Transition key={"direct"} />
                 {reloaded ? (

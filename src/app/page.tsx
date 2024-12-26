@@ -120,28 +120,65 @@ export default function Home() {
       </div>
       {/* Call to action section */}
       <div className="flex-shrink-0 mt-28 p-6">
-        <h1 className="text-5xl font-semibold w-64">
+        <motion.h1
+          initial={{
+            x: 100,
+            opacity: 0,
+          }}
+          whileInView={{
+            x: 0,
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: "all",
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut",
+          }}
+          className="text-5xl font-semibold w-64"
+        >
           {"Let's rock"} <br />
           together <span className="text-6xl text-home-secondary">.</span>
           <br />
           <div className="mt-3 border-b-4 border-home-secondary w-[30%]"></div>
-        </h1>
-        <p className="pt-6 text-xl w-96">
-          Lorem <span className="text-lg font-semibold">ipsum</span> dolor sit
-          amet consectetur adipisicing elit. Ipsam quidem necessitatibus odio
-          veritatis dolores officiis{" "}
-          <span className="text-lg font-semibold">ipsum</span> accusamus eveniet
-          cum numquam veniam aperiam repellendus id{" "}
-          <span className="text-lg font-semibold">ipsum</span> facere recusandae
-          nihil a, rem possimus fugit.
-        </p>
-        <button
-          onClick={() => transitTo("work", setSwapPage)}
-          className="mt-8 py-3 px-6 border-2 border-home-lining text-home-lining rounded-lg text-xl font-bold"
-          style={getStripingStyle(color, 4, 5)}
+        </motion.h1>
+        <motion.div
+          initial={{
+            y: 50,
+            opacity: 0,
+          }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut",
+          }}
         >
-          About my approach
-        </button>
+          <p className="pt-6 text-xl w-96">
+            Lorem <span className="text-lg font-semibold">ipsum</span> dolor sit
+            amet consectetur adipisicing elit. Ipsam quidem necessitatibus odio
+            veritatis dolores officiis{" "}
+            <span className="text-lg font-semibold">ipsum</span> accusamus
+            eveniet cum numquam veniam aperiam repellendus id{" "}
+            <span className="text-lg font-semibold">ipsum</span> facere
+            recusandae nihil a, rem possimus fugit.
+          </p>
+          <button
+            onClick={() => transitTo("work", setSwapPage)}
+            className="mt-8 py-3 px-6 border-2 border-home-lining text-home-lining rounded-lg text-xl font-bold"
+            style={getStripingStyle(color, 4, 5)}
+          >
+            About my approach
+          </button>
+        </motion.div>
       </div>
       {/* Signature Poem */}
       <div className="mt-28 w-full ">
@@ -153,7 +190,25 @@ export default function Home() {
             @ Rahat
           </h3>
         </div>
-        <div className="w-full flex justify-center items-center">
+        <motion.div
+          initial={{
+            y: 30,
+            opacity: 0,
+          }}
+          whileInView={{
+            y: 0,
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.6,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut",
+          }}
+          className="w-full flex justify-center items-center"
+        >
           <p className="italic text-home-primary my-8 text-balance leading-loose font-medium">
             <span className="text-5xl font-bold mr-2 align-middle">“</span>
             Nothing is easy, nothing is hard! <br />
@@ -168,7 +223,7 @@ export default function Home() {
             Hurry up and make me sign!
             <span className="text-5xl font-bold ml-4 align-middle">”</span>
           </p>
-        </div>
+        </motion.div>
       </div>
     </>
   );
