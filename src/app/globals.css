@@ -105,3 +105,56 @@ html {
     transform: translate(0%, 0%) rotate(180deg);
   }
 }
+
+/* Text wave animations */
+.wave-container {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.wave-letter {
+  display: inline-block;
+  animation: wave 2s infinite ease-in-out;
+}
+
+/* Add phase offsets for each letter */
+.wave-letter:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave-letter:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave-letter:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave-letter:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave-letter:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave-letter:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave-letter:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave-letter:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave-letter:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+/* Keyframes for upward wave motion */
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -106,9 +106,13 @@ export default function Home() {
                 easeIn,
                 delay: 2,
               }}
-              className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4"
+              className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4 wave-container"
             >
-              SCROLL
+              {["S", "C", "R", "O", "L", "L"].map((letter, index) => (
+                <span className="wave-letter" key={index}>
+                  {letter}
+                </span>
+              ))}
             </motion.h4>
           ) : (
             <div className="opacity-0 font-semibold text-base tracking-[0.3em] mr-4">
