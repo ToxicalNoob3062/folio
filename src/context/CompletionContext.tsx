@@ -10,7 +10,8 @@ const CompletionContext = createContext<CompletionContextProps | undefined>(
 );
 
 export const CompletionProvider = ({ children }: { children: ReactNode }) => {
-  const [completion, setCompletion] = useState(false);
+  const [completion, setCompletion] = useState<boolean>(false);
+
   return (
     <CompletionContext.Provider value={{ completion, setCompletion }}>
       {children}

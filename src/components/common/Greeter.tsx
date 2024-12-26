@@ -19,9 +19,12 @@ export default function Greeter({
       initial={{ top: "0%" }}
       animate={{ top: "100%" }}
       transition={{ duration: 0.5, delay: 1 }}
-      onAnimationComplete={() => {
+      onAnimationStart={() => {
+        setCompletion(false); //page transition has started set the complete to false
+      }}
+      onAnimationComplete={async () => {
         setReloaded(false);
-        setCompletion(true);
+        setCompletion(true); //page transition has completed set the complete to true
       }}
     >
       <span className="loader"></span>

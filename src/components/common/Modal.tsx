@@ -63,9 +63,10 @@ export default function Modal({
           }
           // set the nav bar to be removed
           safeToRemove();
-          setCompletion(true);
+          setCompletion(true); //page transition has completed set the complete to true
         };
         exitAnimation();
+        setCompletion(false); //page transition has started set the complete to false
       } else {
         safeToRemove();
       }

@@ -19,6 +19,9 @@ export default function Transition() {
       initial={{ top: "-100%" }}
       animate={{ top: "0%" }}
       transition={{ duration: 0.5 }}
+      onAnimationStart={() => {
+        setCompletion(false); //page transition has started set the complete to false
+      }}
       onAnimationComplete={async () => {
         router.push(
           routeStatus.present !== "home" ? `/${routeStatus.present}` : "/"
@@ -35,7 +38,7 @@ export default function Transition() {
         await new Promise((resolve) => setTimeout(resolve, 300));
         await animate(scope.current, { top: "100%" }, { duration: 0.5 });
         setSwapPage(false);
-        setCompletion(true);
+        setCompletion(true); //page transition has completed set the complete to true
       }}
     ></motion.div>
   ) : null;

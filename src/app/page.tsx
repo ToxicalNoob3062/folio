@@ -24,7 +24,7 @@ function getStripingStyle(
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
-  const { completion, setCompletion } = useCompletion();
+  const { completion } = useCompletion();
   const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <>
@@ -49,18 +49,24 @@ export default function Home() {
                   src={"/home-me.png"}
                   alt="cartoon img"
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
                   className="object-contain relative"
+                  priority
                 />
               </motion.div>
             ) : (
               <div
-                className="w-full h-full relative z-20" // Ensure image is always above
+                className={`w-full h-full relative z-20 ${
+                  !completion ? "opacity-0" : ""
+                }`}
               >
                 <Image
                   src={"/home-me.png"}
                   alt="cartoon img"
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
                   className="object-contain relative"
+                  priority
                 />
               </div>
             )}
@@ -68,11 +74,7 @@ export default function Home() {
             {/* Stripe Background Animation */}
             {completion ? (
               <motion.div
-                initial={
-                  completion
-                    ? { x: "-100%", y: "-33%", opacity: 0 }
-                    : { x: "50%", y: "-33%", opacity: 1 }
-                } // Start off-screen and invisible
+                initial={{ x: "-100%", y: "-33%", opacity: 0 }} // Start off-screen and invisible
                 animate={completion ? { x: "50%", y: "-33%", opacity: 1 } : {}}
                 transition={{
                   duration: 1,
@@ -80,14 +82,16 @@ export default function Home() {
                   ease: "easeInOut", // Smooth slide-in
                 }}
                 onAnimationComplete={() => {
-                  setCompletion(false); // Reset completion state after animation
+                  // setCompletion("off"); // Reset completion state after animation
                 }}
                 className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10" // Ensure stripe is below image
                 style={getStripingStyle(color, 10, 10)}
               ></motion.div>
             ) : (
               <div
-                className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10 transform translate-x-1/2 -translate-y-1/3" // Ensure stripe is below image
+                className={`w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10 transform translate-x-1/2 -translate-y-1/3 ${
+                  !completion ? "opacity-0" : ""
+                }`} // Ensure stripe is below image
                 style={getStripingStyle(color, 10, 10)}
               ></div>
             )}
