@@ -1,6 +1,6 @@
 "use client";
 import { Route, routeStatus, transitTo } from "@/data/routes";
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
@@ -30,8 +30,8 @@ export default function Home() {
     <>
       {/* hero section */}
       <div className="h-full flex flex-col items-center justify-center">
-        <div>
-          <div className="w-96 h-96 relative z-0">
+        <div className="h-[60vh]">
+          <div className="w-96 h-96 relative z-0 ">
             {/* Image Animation */}
             {completion && (
               <motion.div
@@ -41,6 +41,7 @@ export default function Home() {
                 }
                 transition={{
                   duration: 0.8,
+                  delay: 0.5,
                   ease: [0.17, 0.67, 0.83, 0.67], // Easing for bounce
                 }}
                 className="w-full h-full relative z-20" // Ensure image is always above
@@ -55,34 +56,65 @@ export default function Home() {
                 />
               </motion.div>
             )}
-
             {/* Stripe Background Animation */}
             {completion && (
               <motion.div
                 initial={{ x: "-100%", y: "-33%", opacity: 0 }} // Start off-screen and invisible
                 animate={completion ? { x: "50%", y: "-33%", opacity: 1 } : {}}
                 transition={{
-                  duration: 1,
-                  delay: 0.5,
+                  duration: 0.8,
+                  delay: 1,
                   ease: "easeInOut", // Smooth slide-in
-                }}
-                onAnimationComplete={() => {
-                  // setCompletion("off"); // Reset completion state after animation
                 }}
                 className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10" // Ensure stripe is below image
                 style={getStripingStyle(color, 10, 10)}
               ></motion.div>
             )}
           </div>
-
-          <motion.h1 className="text-center p-6 text-5xl">
-            Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
-          </motion.h1>
+          {/* Hero Text Animations */}
+          {completion && (
+            <motion.h1
+              initial={{
+                y: 50,
+                opacity: 0,
+              }}
+              animate={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.5,
+                easeIn,
+              }}
+              className="text-center p-6 text-5xl"
+            >
+              Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
+            </motion.h1>
+          )}
         </div>
         <div className="flex-grow flex flex-col">
-          <h4 className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4">
-            SCROLL
-          </h4>
+          {completion ? (
+            <motion.h4
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              transition={{
+                duration: 1,
+                easeIn,
+                delay: 2,
+              }}
+              className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4"
+            >
+              SCROLL
+            </motion.h4>
+          ) : (
+            <div className="opacity-0 font-semibold text-base tracking-[0.3em] mr-4">
+              SCROLL
+            </div>
+          )}
           <div className="border-r border-home-primary flex-grow mt-2"></div>
         </div>
       </div>
