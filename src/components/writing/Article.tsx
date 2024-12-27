@@ -2,7 +2,7 @@ import { Article } from "@/data/routes";
 
 export default function ArticleLink({ title, summary, date }: Article) {
   return (
-    <div className="p-6 mx-4 border-b border-writing-primary text-writing-primary">
+    <div className="py-6 mx-4 border-b border-writing-primary text-writing-primary">
       <h2 className="font-semibold text-writing-lining text-xl tracking-widest mb-4">
         {date}
       </h2>
