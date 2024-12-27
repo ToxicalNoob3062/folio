@@ -55,7 +55,7 @@ export default function Intro({
     <div className="p-6">
       <motion.h1
         initial={{
-          x: 100,
+          x: 50,
           opacity: 0,
         }}
         {...headingProps}
