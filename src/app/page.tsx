@@ -5,6 +5,7 @@ import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
 import { useCompletion } from "@/context/CompletionContext";
+import Intro from "@/components/common/Intro";
 
 function getStripingStyle(
   color: string,
@@ -123,58 +124,13 @@ export default function Home() {
         </div>
       </div>
       {/* Call to action section */}
-      <div className="flex-shrink-0 mt-28 p-6">
-        <motion.h1
-          initial={{
-            x: 100,
-            opacity: 0,
-          }}
-          whileInView={{
-            x: 0,
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: "all",
-          }}
-          transition={{
-            duration: 0.5,
-            ease: "easeInOut",
-          }}
-          className="text-5xl font-semibold w-64"
+      <div className="flex-shrink-0 mt-28">
+        <Intro
+          heading={"Let's rock together"}
+          content={
+            "Lorem ipsum dolor sit, amet **consectetur** adipisicing elit. Architecto, impedit! Sunt **amet** nemo minima impedit **distinctio** ratione, natus necessitatibus. Voluptatem atque consequatur unde nobis quisquam eligendi quaerat dignissimos sit dolorum!"
+          }
         >
-          {"Let's rock"} <br />
-          together <span className="text-6xl text-home-secondary">.</span>
-          <br />
-          <div className="mt-3 border-b-4 border-home-secondary w-[30%]"></div>
-        </motion.h1>
-        <motion.div
-          initial={{
-            y: 50,
-            opacity: 0,
-          }}
-          whileInView={{
-            y: 0,
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.5,
-          }}
-          transition={{
-            duration: 0.5,
-            ease: "easeInOut",
-          }}
-        >
-          <p className="pt-6 text-xl w-96">
-            Lorem <span className="text-lg font-semibold">ipsum</span> dolor sit
-            amet consectetur adipisicing elit. Ipsam quidem necessitatibus odio
-            veritatis dolores officiis{" "}
-            <span className="text-lg font-semibold">ipsum</span> accusamus
-            eveniet cum numquam veniam aperiam repellendus id{" "}
-            <span className="text-lg font-semibold">ipsum</span> facere
-            recusandae nihil a, rem possimus fugit.
-          </p>
           <button
             onClick={() => transitTo("work", setSwapPage)}
             className="mt-8 py-3 px-6 border-2 border-home-lining text-home-lining rounded-lg text-xl font-bold"
@@ -182,7 +138,7 @@ export default function Home() {
           >
             About my approach
           </button>
-        </motion.div>
+        </Intro>
       </div>
       {/* Signature Poem */}
       <div className="mt-28 w-full ">
