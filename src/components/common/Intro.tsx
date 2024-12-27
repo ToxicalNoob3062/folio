@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+"use client";
+import { easeIn, motion } from "framer-motion";
 import Text from "./Bold";
 import { routeStatus } from "@/data/routes";
 
@@ -6,11 +7,50 @@ export default function Intro({
   heading,
   content,
   children,
+  lining,
+  direct,
 }: {
   heading: string;
   content: string;
   children?: React.ReactNode;
+  lining?: boolean;
+  direct?: boolean;
 }) {
+  const headingProps = direct
+    ? {
+        animate: {
+          x: 0,
+          opacity: 1,
+        },
+      }
+    : {
+        whileInView: {
+          x: 0,
+          opacity: 1,
+        },
+        viewport: {
+          once: true,
+          amount: "all",
+        },
+      };
+
+  const contentProps = direct
+    ? {
+        animate: {
+          y: 0,
+          opacity: 1,
+        },
+      }
+    : {
+        whileInView: {
+          y: 0,
+          opacity: 1,
+        },
+        viewport: {
+          once: true,
+          amount: 0.5,
+        },
+      };
   return (
     <div className="p-6">
       <motion.h1
@@ -18,27 +58,26 @@ export default function Intro({
           x: 100,
           opacity: 0,
         }}
-        whileInView={{
-          x: 0,
-          opacity: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: "all",
-        }}
+        {...headingProps}
         transition={{
           duration: 0.5,
-          ease: "easeInOut",
+          easeIn,
         }}
-        className="text-5xl font-semibold w-64"
+        className="text-5xl font-semibold w-72"
       >
         {heading}
-        <span className={`text-6xl text-${routeStatus.present}-secondary`}>
+        <span
+          className={`text-6xl text-${routeStatus.present}-${
+            lining ? "lining" : "secondary"
+          }`}
+        >
           .
         </span>
         <br />
         <div
-          className={`mt-3 border-b-4 border-${routeStatus.present}-secondary w-[30%]`}
+          className={`mt-3 border-b-4 border-${routeStatus.present}-${
+            lining ? "lining" : "secondary"
+          } w-[30%]`}
         ></div>
       </motion.h1>
       <motion.div
@@ -46,23 +85,17 @@ export default function Intro({
           y: 50,
           opacity: 0,
         }}
-        whileInView={{
-          y: 0,
-          opacity: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.5,
-        }}
+        {...contentProps}
         transition={{
           duration: 0.5,
-          ease: "easeInOut",
+          delay: direct ? 0.5 : 0,
+          easeIn,
         }}
       >
         <p className="pt-6 text-xl w-96">
           <Text txt={content} />
         </p>
-        {children}
+        {children ? children : null}
       </motion.div>
     </div>
   );

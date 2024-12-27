@@ -37,6 +37,8 @@ export default function RootLayout({
     setIsOpen((prev) => !prev);
   };
 
+  if (reloaded) updateRouteStatus(route);
+
   return (
     <html lang="en">
       <body
