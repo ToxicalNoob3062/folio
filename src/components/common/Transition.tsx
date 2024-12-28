@@ -1,6 +1,6 @@
 "use client";
 import { useSwapPage } from "@/context/TransitContext";
-import { Route, routeStatus } from "@/data/routes";
+import { Route, routeStatus } from "@/extras/routes";
 import { motion, useAnimate } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { extendedColors } from "../../../tailwind.config";

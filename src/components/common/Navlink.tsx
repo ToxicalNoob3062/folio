@@ -1,4 +1,4 @@
-import { Route } from "@/data/routes";
+import { Route } from "@/extras/routes";
 import { motion } from "framer-motion";
 
 const itemVariants = {

@@ -1,7 +1,7 @@
 "use client";
 import { easeIn, motion } from "framer-motion";
 import Text from "./Bold";
-import { routeStatus } from "@/data/routes";
+import { routeStatus } from "@/extras/routes";
 
 export default function Intro({
   heading,

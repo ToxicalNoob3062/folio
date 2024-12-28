@@ -1,5 +1,5 @@
 "use client";
-import { Route, routeStatus, transitTo } from "@/data/routes";
+import { routeStatus, transitTo } from "@/extras/routes";
 import { easeIn, motion } from "framer-motion";
 import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
@@ -7,22 +7,8 @@ import { useSwapPage } from "@/context/TransitContext";
 import { useCompletion } from "@/context/CompletionContext";
 import Intro from "@/components/common/Intro";
 import ScrollIndicator from "@/components/common/Scroll";
-
-function getStripingStyle(
-  color: string,
-  stripeWidth: number,
-  transparentWidth: number
-) {
-  return {
-    backgroundImage: `repeating-linear-gradient(
-      45deg,
-      ${color} 0,
-      ${color} ${stripeWidth}px,
-      transparent ${stripeWidth}px,
-      transparent ${stripeWidth + transparentWidth}px
-    )`,
-  };
-}
+import { getStripingStyle } from "@/extras/styles";
+import { Route } from "@/extras/types";
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();

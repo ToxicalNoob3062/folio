@@ -1,6 +1,6 @@
 "use client";
 import { useCompletion } from "@/context/CompletionContext";
-import { Route } from "@/data/routes";
+import { Route } from "@/extras/routes";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
 

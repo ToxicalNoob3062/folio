@@ -2,7 +2,7 @@
 import Intro from "@/components/common/Intro";
 import { useCompletion } from "@/context/CompletionContext";
 import { easeIn, motion } from "framer-motion";
-import { Article } from "@/data/routes";
+import { Article } from "@/extras/routes";
 import ArticleLink from "@/components/writing/Article";
 
 const database: Article[] = [

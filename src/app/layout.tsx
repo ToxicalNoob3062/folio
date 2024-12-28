@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Route, updateRouteStatus } from "@/data/routes";
+import { Route, updateRouteStatus } from "@/extras/routes";
 import Header from "@/components/common/Header";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";

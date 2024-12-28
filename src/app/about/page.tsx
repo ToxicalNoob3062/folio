@@ -5,20 +5,23 @@ import { useCompletion } from "@/context/CompletionContext";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { extendedColors } from "../../../tailwind.config";
-import { Route, routeStatus } from "@/data/routes";
+import { routeStatus } from "@/extras/routes";
 import Text from "@/components/common/Bold";
 import H2 from "@/components/about/H2";
+import Banner from "@/components/about/Banner";
+import { getDottedStyle } from "@/extras/styles";
+import { Route } from "@/extras/types";
 
-function getDottedStyle(color: string, dotSize: number, spacing: number) {
-  return {
-    backgroundImage: `
-      radial-gradient(
-        ${color} ${dotSize}px, 
-        transparent ${dotSize}px
-      )`,
-    backgroundSize: `${dotSize + spacing}px ${dotSize + spacing}px`,
-  };
-}
+const database = [
+  {
+    img: "/cat.jpeg",
+    alt: "cat",
+  },
+  {
+    img: "/scene.jpg",
+    alt: "a nice view",
+  },
+];
 
 export default function About() {
   const { completion } = useCompletion();
@@ -62,7 +65,7 @@ export default function About() {
         >
           <Image
             src={"/cropped-me.png"}
-            alt="cartoon img"
+            alt="the real photo of the maker"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
             className="object-contain relative"
@@ -98,8 +101,8 @@ export default function About() {
           className="w-96 h-96 relative z-20"
         >
           <Image
-            src={"/thoughts2.png"}
-            alt="cartoon img"
+            src={"/thoughts.png"}
+            alt="a developer thinking deeply"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
             className="object-contain relative"
@@ -117,7 +120,11 @@ export default function About() {
           <H2 text={"Hobbies"} />
           <Text txt="Outside of my work I like to **spend** as much time as I can away from my **laptop**, travelling and **getting** out and about with my camera. I shoot on a Fujifilm X-E4 with either a 23mm or 35mm lens, or sometimes just my phone." />
         </div>
-        <div></div>
+      </div>
+      <div className="grid grid-cols-1 gap-8 p-6">
+        {database.map((item, index) => (
+          <Banner key={index} img={item.img} alt={item.alt} />
+        ))}
       </div>
     </>
   );

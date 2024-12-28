@@ -1,10 +1,4 @@
-export type Route = "home" | "about" | "work" | "writing";
-
-export type Article = {
-  date: string;
-  title: string;
-  summary: string;
-};
+import { Route } from "./types";
 
 export const routeStatus = {
   present: "home",

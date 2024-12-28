@@ -1,9 +1,9 @@
 import SocialBar from "./SocialBar";
 import NavLink from "./Navlink";
 import { motion, useAnimate, usePresence } from "framer-motion";
-import { Route } from "@/data/routes";
+import { Route } from "@/extras/routes";
 import { useEffect } from "react";
-import { routeStatus } from "@/data/routes";
+import { routeStatus } from "@/extras/routes";
 import { extendedColors } from "../../../tailwind.config";
 import { useCompletion } from "@/context/CompletionContext";
 
