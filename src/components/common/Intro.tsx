@@ -92,7 +92,7 @@ export default function Intro({
           easeIn,
         }}
       >
-        <p className="pt-6 text-xl w-96">
+        <p className="pt-6 text-xl leading-relaxed">
           <Text txt={content} />
         </p>
         {children ? children : null}

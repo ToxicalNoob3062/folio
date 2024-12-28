@@ -6,6 +6,7 @@ import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
 import { useCompletion } from "@/context/CompletionContext";
 import Intro from "@/components/common/Intro";
+import ScrollIndicator from "@/components/common/Scroll";
 
 function getStripingStyle(
   color: string,
@@ -30,8 +31,8 @@ export default function Home() {
   return (
     <>
       {/* hero section */}
-      <div className="h-full flex flex-col items-center justify-center">
-        <div className="h-[60vh]">
+      <div className="min-h-screen flex flex-col items-center">
+        <div className="">
           <div className="w-96 h-96 relative z-0 ">
             {/* Image Animation */}
             {completion && (
@@ -93,35 +94,7 @@ export default function Home() {
             </motion.h1>
           )}
         </div>
-        <div className="flex-grow flex flex-col">
-          {completion ? (
-            <motion.h4
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              transition={{
-                duration: 1,
-                easeIn,
-                delay: 2,
-              }}
-              className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4 wave-container"
-            >
-              {["S", "C", "R", "O", "L", "L"].map((letter, index) => (
-                <span className="wave-letter" key={index}>
-                  {letter}
-                </span>
-              ))}
-            </motion.h4>
-          ) : (
-            <div className="opacity-0 font-semibold text-base tracking-[0.3em] mr-4">
-              SCROLL
-            </div>
-          )}
-          <div className="border-r border-home-primary flex-grow mt-2"></div>
-        </div>
+        <ScrollIndicator delay={2} />
       </div>
       {/* Call to action section */}
       <div className="flex-shrink-0 mt-28">

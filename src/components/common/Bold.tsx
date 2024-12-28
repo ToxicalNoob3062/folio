@@ -6,7 +6,7 @@ export default function Text({ txt }: { txt: string }) {
     return parts.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <span key={index} className="text-lg font-semibold">
+          <span key={index} className="font-semibold">
             {part.slice(2, -2)}
           </span>
         );

@@ -1,17 +1,22 @@
+"use client";
+import Intro from "@/components/common/Intro";
+import ScrollIndicator from "@/components/common/Scroll";
+import { useCompletion } from "@/context/CompletionContext";
+
 export default function About() {
+  const { completion } = useCompletion();
   return (
     <div className="">
-      <h1 className="font-bold mb-3 text-center">About Section</h1>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis iste
-      impedit facilis accusantium sed quaerat ducimus vitae magni harum, minima
-      ipsa asperiores, laborum voluptatum, provident recusandae tempora
-      temporibus fuga porro. Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Porro eos eum nostrum placeat et, dolor non eveniet, maxime, facilis
-      laborum pariatur amet? Architecto in optio error commodi unde blanditiis
-      laudantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-      est magni quod cumque aspernatur. Rerum quod quas doloribus iusto
-      aspernatur autem possimus voluptatum non accusamus, quam reprehenderit
-      sapiente nam facere.
+      <div className="min-h-screen flex flex-col items-center gap-8">
+        {completion && (
+          <Intro
+            heading={"About me"}
+            content="I'm a **developer**, **designer** and **linguist** who has been building for the web in some capacity since 2001. I specialise in accessibility, performance and usability without sacrificing creativity."
+            direct
+          />
+        )}
+        <ScrollIndicator delay={1} />
+      </div>
     </div>
   );
 }
