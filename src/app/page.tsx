@@ -38,13 +38,16 @@ export default function Home() {
             {completion && (
               <motion.div
                 initial={{ scale: 0, opacity: 0 }} // Ensure the image starts invisible and small
-                animate={
-                  { scale: [0, 1.2, 0.9, 1], opacity: [0, 1] } // Bounce effect with fade-in
-                }
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                }}
                 transition={{
+                  type: "spring", // Use spring transition
+                  stiffness: 100, // Adjust stiffness for stronger spring effect
+                  damping: 10, // Controls how "bouncy" the spring is
                   duration: 0.8,
                   delay: 0.5,
-                  ease: [0.17, 0.67, 0.83, 0.67], // Easing for bounce
                 }}
                 className="w-full h-full relative z-20" // Ensure image is always above
               >

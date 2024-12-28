@@ -15,5 +15,5 @@ export default function Text({ txt }: { txt: string }) {
     });
   };
 
-  return <>{parseText(txt)}</>;
+  return <p>{parseText(txt)}</p>;
 }

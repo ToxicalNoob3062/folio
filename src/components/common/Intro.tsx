@@ -92,9 +92,9 @@ export default function Intro({
           easeIn,
         }}
       >
-        <p className="pt-6 text-xl leading-relaxed">
+        <div className="pt-6 text-xl leading-relaxed">
           <Text txt={content} />
-        </p>
+        </div>
         {children ? children : null}
       </motion.div>
     </div>
