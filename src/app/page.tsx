@@ -105,8 +105,30 @@ export default function Home() {
       {/* Signature Poem */}
       <div className="mt-28 w-full ">
         <div className="text-center w-fit mx-auto">
-          <h1 className="text-home-primary text-5xl font-semibold border-b-4 border-home-highlight">
+          <h1 className="text-home-primary text-5xl font-semibold">
             {"Mind's Play"}
+            <br />
+            <div className="flex justify-center">
+              <motion.span
+                initial={{
+                  width: 0,
+                  opacity: 0,
+                }}
+                whileInView={{
+                  width: "100%",
+                  opacity: 0.8,
+                }}
+                viewport={{
+                  once: true,
+                  amount: "all",
+                }}
+                transition={{
+                  duration: 1,
+                  ease: "easeIn",
+                }}
+                className="inline-block border-b-4 border-home-highlight"
+              ></motion.span>
+            </div>
           </h1>
           <h3 className="text-right text-lg font-bold mt-2 text-home-lining">
             @ Rahat
