@@ -25,7 +25,25 @@ export default function SkillSet({ skill }: { skill: Skill }) {
   };
 
   return (
-    <div className="p-6">
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 50,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+      }}
+      viewport={{
+        once: true,
+        amount: 0.5,
+      }}
+      className="p-6"
+    >
       {/* Header with Animation */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -63,6 +81,6 @@ export default function SkillSet({ skill }: { skill: Skill }) {
           ))}
         </motion.div>
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

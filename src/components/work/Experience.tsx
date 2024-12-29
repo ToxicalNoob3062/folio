@@ -39,7 +39,25 @@ export default function Experience({ xp }: { xp: XP }) {
   const { id, role, company, date, points } = xp;
 
   return (
-    <div className="p-4">
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 50,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+      }}
+      viewport={{
+        once: true,
+        amount: 0.5,
+      }}
+      className="p-4"
+    >
       {/* Header Section */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -82,6 +100,6 @@ export default function Experience({ xp }: { xp: XP }) {
           ))}
         </motion.ul>
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
