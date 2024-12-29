@@ -105,7 +105,7 @@ export default function Home() {
       {/* Signature Poem */}
       <div className="mt-28 w-full ">
         <div className="text-center w-fit mx-auto">
-          <h1 className="text-home-primary text-5xl font-semibold border-b-4 border-home-secondary">
+          <h1 className="text-home-primary text-5xl font-semibold border-b-4 border-home-highlight">
             {"Mind's Play"}
           </h1>
           <h3 className="text-right text-lg font-bold mt-2 text-home-lining">

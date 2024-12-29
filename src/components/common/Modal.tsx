@@ -1,7 +1,7 @@
 import SocialBar from "./SocialBar";
 import NavLink from "./Navlink";
 import { motion, useAnimate, usePresence } from "framer-motion";
-import { Route } from "@/extras/routes";
+import { Route } from "@/extras/types";
 import { useEffect } from "react";
 import { routeStatus } from "@/extras/routes";
 import { extendedColors } from "../../../tailwind.config";

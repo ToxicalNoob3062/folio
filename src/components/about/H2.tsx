@@ -1,3 +1,4 @@
+import { routeStatus } from "@/extras/routes";
 import { easeIn, motion } from "framer-motion";
 
 export default function H2({ text }: { text: string }) {
@@ -18,7 +19,7 @@ export default function H2({ text }: { text: string }) {
           once: true,
           amount: "all",
         }}
-        className="text-5xl inline-block ml-2"
+        className={`text-5xl inline-block ml-2 text-${routeStatus.present}-highlight`}
       >
         .
       </motion.span>
@@ -40,7 +41,7 @@ export default function H2({ text }: { text: string }) {
           duration: 0.5,
           ease: "easeIn",
         }}
-        className="w-[20%] inline-block border-b-4 border-about-lining"
+        className={`w-[20%] inline-block border-b-4 border-${routeStatus.present}-highlight`}
       ></motion.span>
     </h2>
   );

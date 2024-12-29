@@ -1,4 +1,4 @@
-import { Article } from "@/extras/routes";
+import { Article } from "@/extras/types";
 
 export default function ArticleLink({ title, summary, date }: Article) {
   return (

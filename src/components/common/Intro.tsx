@@ -7,13 +7,11 @@ export default function Intro({
   heading,
   content,
   children,
-  lining,
   direct,
 }: {
   heading: string;
   content: string;
   children?: React.ReactNode;
-  lining?: boolean;
   direct?: boolean;
 }) {
   const headingProps = direct
@@ -66,18 +64,12 @@ export default function Intro({
         className="text-5xl font-semibold w-72"
       >
         {heading}
-        <span
-          className={`text-6xl text-${routeStatus.present}-${
-            lining ? "lining" : "secondary"
-          }`}
-        >
+        <span className={`text-6xl text-${routeStatus.present}-highlight`}>
           .
         </span>
         <br />
         <div
-          className={`mt-3 border-b-4 border-${routeStatus.present}-${
-            lining ? "lining" : "secondary"
-          } w-[30%]`}
+          className={`mt-3 border-b-4 border-${routeStatus.present}-highlight w-[30%]`}
         ></div>
       </motion.h1>
       <motion.div
