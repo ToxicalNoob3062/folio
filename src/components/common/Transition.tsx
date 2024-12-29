@@ -1,10 +1,11 @@
 "use client";
 import { useSwapPage } from "@/context/TransitContext";
-import { Route, routeStatus } from "@/extras/routes";
+import { routeStatus } from "@/extras/routes";
 import { motion, useAnimate } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { extendedColors } from "../../../tailwind.config";
 import { useCompletion } from "@/context/CompletionContext";
+import { Route } from "@/extras/types";
 
 export default function Transition() {
   const router = useRouter();

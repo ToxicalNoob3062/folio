@@ -69,10 +69,7 @@ export default function Experience({ xp }: { xp: XP }) {
           exit="exit"
         >
           <div>
-            <h2 className="text-2xl text-work-lining font-bold">
-              <span className="text-lg mr-2">{id + 1}.</span>
-              {role}
-            </h2>
+            <h2 className="text-2xl text-work-lining font-bold">{role}</h2>
             <h4 className="text-xl text-gray-600 font-medium">{company}</h4>
           </div>
           <h6 className="text-lg text-work-highlight font-medium">{date}</h6>
