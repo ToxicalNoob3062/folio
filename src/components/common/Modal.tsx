@@ -2,7 +2,7 @@ import SocialBar from "./SocialBar";
 import NavLink from "./Navlink";
 import { motion, useAnimate, usePresence } from "framer-motion";
 import { Route } from "@/extras/types";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { routeStatus } from "@/extras/routes";
 import { extendedColors } from "../../../tailwind.config";
 import { useCompletion } from "@/context/CompletionContext";
@@ -20,8 +20,10 @@ const containerVariants = {
 
 export default function Modal({
   changeRoute,
+  setReloaded,
 }: {
   changeRoute: (newRoute: Route) => void;
+  setReloaded: Dispatch<SetStateAction<boolean>>;
 }) {
   const [isPresent, safeToRemove] = usePresence();
   const { setCompletion } = useCompletion();
@@ -55,15 +57,8 @@ export default function Modal({
             },
             { duration: 0.4 }
           );
-
-          //slide down the nav bar
-          await new Promise((resolve) => setTimeout(resolve, 300));
-          if (scope.current) {
-            await animate(scope.current, { top: "100%" }, { duration: 0.25 });
-          }
-          // set the nav bar to be removed
+          setReloaded(true);
           safeToRemove();
-          setCompletion(true); //page transition has completed set the complete to true
         };
         exitAnimation();
         setCompletion(false); //page transition has started set the complete to false
@@ -71,7 +66,7 @@ export default function Modal({
         safeToRemove();
       }
     }
-  }, [isPresent, animate, safeToRemove, setCompletion, scope]);
+  }, [isPresent, scope, animate, safeToRemove, setCompletion, setReloaded]);
   return (
     <motion.div
       className={`bg-${routeStatus.present}-secondary absolute top-0 left-0 w-full h-full z-20 pt-20`}

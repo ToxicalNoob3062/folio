@@ -2,7 +2,7 @@
 import Intro from "@/components/common/Intro";
 import { useCompletion } from "@/context/CompletionContext";
 import { easeIn, motion } from "framer-motion";
-import { Article } from "@/extras/routes";
+import { Article } from "@/extras/types";
 import ArticleLink from "@/components/writing/Article";
 
 const database: Article[] = [
@@ -46,7 +46,6 @@ export default function Writing() {
         <Intro
           heading={"My writing"}
           content="Here you'll find my **writing** on topics ranging from coding and the web industry, to **linguistics** and natural language **processing** – there's also a handy RSS feed, if you'd prefer to subscribe. If you'd like to chat about anything I've written, say hi on Bluesky."
-          lining
           direct
         />
       )}

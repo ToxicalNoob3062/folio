@@ -6,8 +6,13 @@ import { useRouter } from "next/navigation";
 import { extendedColors } from "../../../tailwind.config";
 import { useCompletion } from "@/context/CompletionContext";
 import { Route } from "@/extras/types";
+import { Dispatch, SetStateAction } from "react";
 
-export default function Transition() {
+export default function Transition({
+  setReloaded,
+}: {
+  setReloaded: Dispatch<SetStateAction<boolean>>;
+}) {
   const router = useRouter();
   const { swapPage, setSwapPage } = useSwapPage();
   const [scope, animate] = useAnimate();
@@ -36,10 +41,8 @@ export default function Transition() {
           { duration: 0.5 }
         );
         //slide down the palete
-        await new Promise((resolve) => setTimeout(resolve, 300));
-        await animate(scope.current, { top: "100%" }, { duration: 0.5 });
         setSwapPage(false);
-        setCompletion(true); //page transition has completed set the complete to true
+        setReloaded(true);
       }}
     ></motion.div>
   ) : null;
