@@ -3,8 +3,8 @@ import { routeStatus } from "@/extras/routes";
 import { getDottedStyle } from "@/extras/styles";
 import { Route } from "@/extras/types";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { extendedColors } from "../../../tailwind.config";
+import Img from "../common/Img";
 
 export default function Banner({ img, alt }: { img: string; alt: string }) {
   const color = extendedColors[routeStatus.present as Route];
@@ -35,15 +35,7 @@ export default function Banner({ img, alt }: { img: string; alt: string }) {
       </motion.div>
       {/* Responsive Image */}
       <div className="relative w-full">
-        <Image
-          src={img}
-          alt={alt}
-          width={0} // Auto-determined based on parent
-          height={0} // Auto-determined based on parent
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
-          className="w-full h-auto object-contain" // Ensures the image adjusts height dynamically
-          priority
-        />
+        <Img src={img} alt={alt} />
       </div>
     </div>
   );

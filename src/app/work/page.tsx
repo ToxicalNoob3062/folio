@@ -39,7 +39,7 @@ const projects: Project[] = [
     icon: "/project1.png",
     title: "Go Service Hub",
     description:
-      "Developed a **Go microservice** architecture consisting of **five** services—Broker, **Mailer**, Consumer, Auth, and Logger—designed to process API requests in a fully distributed system connected via complex networking protocols such as HTTP, RPC, gRPC, AMQP, and SMTP",
+      "Developed a **Microservice Hub** in golang consisting of **five** services designed to process **API requests** in a fully distributed system connected via complex networking protocols such as **HTTP**, **RPC**, **gRPC**, **AMQP**, and **SMTP**",
     links: {
       live: "https://example.com",
       source: "",
@@ -51,7 +51,7 @@ const projects: Project[] = [
     icon: "/project2.png",
     title: "Truth Engine",
     description:
-      "Developed a client-side **JavaScript recursive engine** utilizing recursion and renowned data structures to generate truth tables from boolean expressions, applying combinatorics principles for accurate output",
+      "Developed a client-side **JavaScript recursive engine** utilizing **recursion** and renowned **data structures** to generate **truth tables** from boolean expressions, applying combinatorics principles for accurate output",
     links: {
       live: "https://example.com",
       source: "https://github.com",

@@ -3,7 +3,6 @@ import Intro from "@/components/common/Intro";
 import ScrollIndicator from "@/components/common/Scroll";
 import { useCompletion } from "@/context/CompletionContext";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { extendedColors } from "../../../tailwind.config";
 import { routeStatus } from "@/extras/routes";
 import Text from "@/components/common/Bold";
@@ -11,6 +10,8 @@ import H2 from "@/components/about/H2";
 import Banner from "@/components/about/Banner";
 import { getDottedStyle } from "@/extras/styles";
 import { Route } from "@/extras/types";
+import Img from "@/components/common/Img";
+import Image from "next/image";
 
 const database = [
   {
@@ -61,8 +62,9 @@ export default function About() {
             duration: 1, // Total duration
           }}
           style={getDottedStyle(color.secondary, 4, 10)}
-          className="w-80 h-80 relative z-20 rounded-full overflow-hidden border-t-4 border-about-lining"
+          className="w-80 h-80 relative z-20 rounded-full border-t-4 overflow-hidden border-about-lining"
         >
+          {/* keep this as it is for the fill varient */}
           <Image
             src={"/cropped-me.png"}
             alt="the real photo of the maker"
@@ -100,14 +102,7 @@ export default function About() {
           }}
           className="w-96 h-96 relative z-20"
         >
-          <Image
-            src={"/thoughts.png"}
-            alt="a developer thinking deeply"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
-            className="object-contain relative"
-            priority
-          />
+          <Img src="/thoughts.png" alt="thoughts" />
         </motion.div>
 
         <div className="text-lg leading-relaxed flex flex-col gap-8 p-6">

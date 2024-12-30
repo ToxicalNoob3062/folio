@@ -1,7 +1,6 @@
 "use client";
 import { routeStatus, transitTo } from "@/extras/routes";
 import { easeIn, motion } from "framer-motion";
-import Image from "next/image";
 import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
 import { useCompletion } from "@/context/CompletionContext";
@@ -9,6 +8,7 @@ import Intro from "@/components/common/Intro";
 import ScrollIndicator from "@/components/common/Scroll";
 import { getStripingStyle } from "@/extras/styles";
 import { Route } from "@/extras/types";
+import Img from "@/components/common/Img";
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
@@ -37,14 +37,7 @@ export default function Home() {
                 }}
                 className="w-full h-full relative z-20" // Ensure image is always above
               >
-                <Image
-                  src={"/home-me.png"}
-                  alt="cartoon img"
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw"
-                  className="object-contain relative"
-                  priority
-                />
+                <Img src="/home-me.png" alt="Rahat" />
               </motion.div>
             )}
             {/* Stripe Background Animation */}

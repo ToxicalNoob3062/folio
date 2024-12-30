@@ -20,7 +20,7 @@ export default function Greeter({
       className={`bg-${route}-secondary absolute top-0 left-0 w-full h-full z-30 flex justify-center items-center`}
       initial={{ top: "0%" }}
       animate={{ top: isPageLoading ? "0%" : "100%" }}
-      transition={{ duration: isPageLoading ? 0 : 0.5, delay: 1 }}
+      transition={{ duration: isPageLoading ? 0 : 0.5, delay: 0.5 }}
       onAnimationStart={() => {
         setCompletion(false); //page transition has started set the complete to false
       }}
