@@ -63,6 +63,11 @@ const projects: Project[] = [
 const skillsData: Skill[] = [
   {
     id: 0,
+    heading: "Languages",
+    images: ["js.svg", "python.svg", "go.svg", "cpp.svg", "java.svg"],
+  },
+  {
+    id: 1,
     heading: "Databases",
     images: [
       "/mongodb.svg",
@@ -71,11 +76,6 @@ const skillsData: Skill[] = [
       "/dynamo.svg",
       "/cockroachdb.svg",
     ],
-  },
-  {
-    id: 1,
-    heading: "Languages",
-    images: ["js.svg", "python.svg", "go.svg", "cpp.svg", "java.svg"],
   },
 ];
 
