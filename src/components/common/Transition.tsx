@@ -32,14 +32,15 @@ export default function Transition({
         router.push(
           routeStatus.present !== "home" ? `/${routeStatus.present}` : "/"
         );
-        await animate(
-          scope.current,
-          {
-            backgroundColor:
-              extendedColors[routeStatus.present as Route].secondary,
-          },
-          { duration: 0.5 }
-        );
+        if (scope.current)
+          await animate(
+            scope.current,
+            {
+              backgroundColor:
+                extendedColors[routeStatus.present as Route].secondary,
+            },
+            { duration: 0.5 }
+          );
         //slide down the palete
         setSwapPage(false);
         setReloaded(true);

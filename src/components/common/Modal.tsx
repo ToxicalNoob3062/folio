@@ -34,29 +34,33 @@ export default function Modal({
       if (routeStatus.past !== routeStatus.present) {
         const exitAnimation = async () => {
           // inavildate the nav bar
-          await animate(scope.current, { zIndex: 40 }, { duration: 0.1 });
+          if (scope.current)
+            await animate(scope.current, { zIndex: 40 }, { duration: 0.1 });
 
           // unstag all the child elements od scope
           let children = Array.from(scope.current.children); //length:2
           await new Promise((resolve) => setTimeout(resolve, 50));
-          await animate(children[0], { opacity: 0 }, { duration: 0.1 });
+          if (scope.current)
+            await animate(children[0], { opacity: 0 }, { duration: 0.1 });
 
           //now remove the opacity of children[1] childrens one by one
           children = Array.from((children[1] as HTMLDivElement).children);
           for (let i = 0; i < children.length; i++) {
             await new Promise((resolve) => setTimeout(resolve, 50));
-            await animate(children[i], { opacity: 0 }, { duration: 0.1 });
+            if (scope.current)
+              await animate(children[i], { opacity: 0 }, { duration: 0.1 });
           }
 
           //change background color
-          await animate(
-            scope.current,
-            {
-              backgroundColor:
-                extendedColors[routeStatus.present as Route].secondary,
-            },
-            { duration: 0.4 }
-          );
+          if (scope.current)
+            await animate(
+              scope.current,
+              {
+                backgroundColor:
+                  extendedColors[routeStatus.present as Route].secondary,
+              },
+              { duration: 0.4 }
+            );
           setReloaded(true);
           safeToRemove();
         };
