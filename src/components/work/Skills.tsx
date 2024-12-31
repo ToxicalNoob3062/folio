@@ -1,29 +1,26 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Img from "@/components/common/Img"; // Assuming you have an Img component for image handling
+import { Skill } from "@/extras/types";
 
-// Type definition for a Skill
-export type Skill = {
-  id: number;
-  heading: string;
-  images: string[];
+const containerVariants = {
+  initial: { opacity: 0, x: 30 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
+  exit: {
+    opacity: 0,
+    x: -30,
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
 };
 
 // Skills Component
 export default function SkillSet({ skill }: { skill: Skill }) {
-  const containerVariants = {
-    initial: { opacity: 0, x: 30 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
-    exit: {
-      opacity: 0,
-      x: -30,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
-  };
-
+  const prefix = `${
+    process.env.NEXT_PUBLIC_S3_URL
+  }/skills/${skill.heading.toLowerCase()}/`;
   return (
     <motion.div
       initial={{
@@ -76,7 +73,7 @@ export default function SkillSet({ skill }: { skill: Skill }) {
               className="w-14 h-14 mx-auto"
               whileHover={{ scale: 1.1 }}
             >
-              <Img src={src} alt={`${skill.heading} Skill ${index}`} />
+              <Img src={prefix + src} alt={`${skill.heading} Skill ${index}`} />
             </motion.div>
           ))}
         </motion.div>

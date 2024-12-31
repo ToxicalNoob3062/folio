@@ -9,31 +9,28 @@ import Text from "@/components/common/Bold";
 import H2 from "@/components/about/H2";
 import Banner from "@/components/about/Banner";
 import { getDottedStyle } from "@/extras/styles";
-import { Route } from "@/extras/types";
+import { Gallery, Route } from "@/extras/types";
 import Img from "@/components/common/Img";
 import Image from "next/image";
-
-const database = [
-  {
-    img: "/cat.jpeg",
-    alt: "cat",
-  },
-  {
-    img: "/scene.jpg",
-    alt: "a nice view",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import { fetchAll } from "@/extras/queries";
 
 export default function About() {
   const { completion } = useCompletion();
   const color = extendedColors[routeStatus.present as Route];
+  const { data: gallerySet } = useQuery<Gallery[]>({
+    queryKey: ["gallery"],
+    queryFn: fetchAll("gallery"),
+  });
+  const gallery = gallerySet ? gallerySet[0] : { images: [] };
+  const prefix = process.env.NEXT_PUBLIC_S3_URL + "/gallery/";
   return (
     <>
       <div className="min-h-screen flex flex-col items-center gap-8">
         {completion && (
           <Intro
             heading={"About me"}
-            content="I'm a **developer**, **designer** and **linguist** who has been building for the web in some capacity since 2001. I specialise in accessibility, performance and usability without sacrificing creativity."
+            content="I am a **Software Engineer** based in **Orleans, Canada.** My guiding principle is simple: **always learn and adapt** to meet project demands, ensuring the best outcomes rather than limiting myself to a predefined skillset. While this approach might require extra effort, it yields long-term benefits for both myself and my clients in terms of **monetary value** and **satisfaction**."
             direct
           />
         )}
@@ -76,8 +73,9 @@ export default function About() {
         </motion.div>
 
         <div className="text-lg leading-relaxed flex flex-col gap-8 p-6">
-          <Text txt="The valleys of rural Wales aren't **quite Silicon Valley**, but growing up out here gives you a lot of space to think. When I wasn't out **exploring** the mountains, I was teaching myself to code. A lot has **changed over the years**, but I’ve been building for the web since table layouts and under-construction gifs were the Hot New Thing™." />
-          <Text txt="The valleys of rural Wales aren't **quite Silicon Valley**, but growing up out here gives you a lot of space to think. When I wasn't out **exploring** the mountains, I was teaching myself to code. A lot has **changed over the years**, but I’ve been building for the web since table layouts and under-construction gifs were the Hot New Thing™." />
+          <Text txt="I was born in **Dhaka, Bangladesh**, and as a part of **Gen Z**, I witnessed the **tech boom** from an early age. Fascinated by technology, I transitioned from being a user to becoming a builder during my **high school years.**" />
+          <Text txt="Driven by my love for **data and its monetary potential**, I pursued a **Bachelor’s in Computer Science at Carleton University, Canada,** seeking better opportunities and growth." />
+          <Text txt="Currently, I’m in an exciting phase of life, actively seeking **co-op career opportunities** to transition from solo development to collaborating with teams and building a strong **industry presence** through **high-quality work**." />
         </div>
       </div>
       <div className="flex flex-col justify-center items-center relative z-0 mt-28 gap-12">
@@ -107,18 +105,36 @@ export default function About() {
 
         <div className="text-lg leading-relaxed flex flex-col gap-8 p-6">
           <H2 text={"Versatality"} />
-          <Text txt="The valleys of rural Wales aren't **quite Silicon Valley**, but growing up out here gives you a lot of space to think. When I wasn't out **exploring** the mountains, I was teaching myself to code. A lot has **changed over the years**, but I’ve been building for the web since table layouts and under-construction gifs were the Hot New Thing™." />
+          <Text txt="My biggest strength has always been my **versatility** —exploring various branches of **computer science.** From **data representation** to **data safety**, I’ve tackled diverse challenges:" />
+          <ul className="list-disc list-outside pl-8 flex flex-col gap-4">
+            <li>
+              <Text txt="Created **aesthetic user interfaces** for representing data." />
+            </li>
+            <li>
+              <Text txt="Developed **complex algorithms** to solve heavy computational problems." />
+            </li>
+            <li>
+              <Text txt="Engaged in **competitive programming** on platforms like **LeetCode** and **CodeForces**." />
+            </li>
+            <li>
+              <Text txt="Worked on **data analysis**, **web scraping**, **computer graphics**, **microservices**, and **API building.**" />
+            </li>
+            <li>
+              <Text txt="Built **scalable architectures** on **AWS** and contributed to **open-source** through small libraries." />
+            </li>
+          </ul>
+          <Text txt="Recently, I’ve delved into **AI**, learning to train and create models using **TensorFlow**, and I’m eager to deepen my expertise in this field." />
         </div>
       </div>
       <div>
         <div className="text-lg leading-relaxed flex flex-col gap-8 p-6">
           <H2 text={"Hobbies"} />
-          <Text txt="Outside of my work I like to **spend** as much time as I can away from my **laptop**, travelling and **getting** out and about with my camera. I shoot on a Fujifilm X-E4 with either a 23mm or 35mm lens, or sometimes just my phone." />
+          <Text txt="Outside of coding, I love teaching and sharing knowledge through **educational content**, **poetry**, and **blog posts** to contribute to the community. I also enjoy **mobile photography**, **watching movies**, and **cooking occasionally**, as well as participating in **volunteer activities** to support organizations in achieving their **social goals.**" />
         </div>
       </div>
       <div className="grid grid-cols-1 gap-8 p-6">
-        {database.map((item, index) => (
-          <Banner key={index} img={item.img} alt={item.alt} />
+        {gallery?.images.map((item, index) => (
+          <Banner key={index} img={prefix + item} alt={item} />
         ))}
       </div>
     </>

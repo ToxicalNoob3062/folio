@@ -2,87 +2,35 @@
 import { useCompletion } from "@/context/CompletionContext";
 import Intro from "@/components/common/Intro";
 import ScrollIndicator from "@/components/common/Scroll";
-import Experience, { XP } from "@/components/work/Experience";
+import Experience from "@/components/work/Experience";
 import { easeIn, motion } from "framer-motion";
 import { useState } from "react";
 import Img from "@/components/common/Img";
-import ProjectLinks, { Project } from "@/components/work/Project";
-import SkillSet, { Skill } from "@/components/work/Skills";
-
-const experiences: XP[] = [
-  {
-    id: 0,
-    role: "Backend Engineer",
-    company: "King Digital Recharge, Dhaka, Bangladesh",
-    date: "Oct 2022 - Apr 2023",
-    points: [
-      "Tested backends by writing **unit tests** and **integration tests** in **Jest** for pre-existing **Node** backend projects which improved the software assurance and quality.",
-      "Optimized back-end systems for mobile recharge transactions, resulting in a significant increase in server efficiency by **10,000 requests** and a remarkable **45% reduction** in costs.",
-    ],
-  },
-  {
-    id: 1,
-    role: "Frontend Developer",
-    company: "Creative Agency, Tokyo, Japan",
-    date: "May 2021 - Sep 2022",
-    points: [
-      "Developed responsive websites with modern designs using **React** and **Tailwind CSS**.",
-      "Collaborated with the design team to implement user-friendly interfaces, increasing user engagement by **25%**.",
-    ],
-  },
-  // Add more experiences as needed
-];
-
-const projects: Project[] = [
-  {
-    id: 0,
-    icon: "/project1.png",
-    title: "Go Service Hub",
-    description:
-      "Developed a **Microservice Hub** in golang consisting of **five** services designed to process **API requests** in a fully distributed system connected via complex networking protocols such as **HTTP**, **RPC**, **gRPC**, **AMQP**, and **SMTP**",
-    links: {
-      live: "https://example.com",
-      source: "",
-      video: "",
-    },
-  },
-  {
-    id: 1,
-    icon: "/project2.png",
-    title: "Truth Engine",
-    description:
-      "Developed a client-side **JavaScript recursive engine** utilizing **recursion** and renowned **data structures** to generate **truth tables** from boolean expressions, applying combinatorics principles for accurate output",
-    links: {
-      live: "https://example.com",
-      source: "https://github.com",
-      video: "https://youtube.com",
-    },
-  },
-];
-
-const skillsData: Skill[] = [
-  {
-    id: 0,
-    heading: "Languages",
-    images: ["js.svg", "python.svg", "go.svg", "cpp.svg", "java.svg"],
-  },
-  {
-    id: 1,
-    heading: "Databases",
-    images: [
-      "/mongodb.svg",
-      "/postgresql.svg",
-      "/redis.svg",
-      "/dynamo.svg",
-      "/cockroachdb.svg",
-    ],
-  },
-];
+import ProjectLinks from "@/components/work/Project";
+import SkillSet from "@/components/work/Skills";
+import { Project, Skill, XP } from "@/extras/types";
+import { fetchAll } from "@/extras/queries";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Work() {
   const { completion } = useCompletion();
   const [currentExperienceIndex, setCurrentExperienceIndex] = useState(0);
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
+
+  const { data: skills } = useQuery<Skill[]>({
+    queryKey: ["skills"],
+    queryFn: fetchAll("skills"),
+  });
+
+  const { data: projects } = useQuery<Project[]>({
+    queryKey: ["projects"],
+    queryFn: fetchAll("projects"),
+  });
+
+  const { data: experiences } = useQuery<XP[]>({
+    queryKey: ["experiences"],
+    queryFn: fetchAll("experiences"),
+  });
 
   return (
     <>
@@ -90,7 +38,7 @@ export default function Work() {
         {completion && (
           <Intro
             heading={"Work is life"}
-            content="I work with forward-thinking people to design and build interactive, accessible websites and products. From working on projects for likes of **Aardman Animations**, **UNHCR**, RNLI, and **Honda**, to working at startups in **Tokyo**, I've devoted more than a decade to making the web a little bit brighter."
+            content="I dedicate **half of my day** to delivering the best work I can and finding **inner peace** by seeing the impact of my efforts. I thrive in **collaborative environments** where I can work with passionate individuals, as it allows me to **learn from the best** and help guide others to ensure the team's success. When working with clients, I seek out **forward-thinking** people who are committed to **making meaningful changes** to make a **better world.**"
             direct
           />
         )}
@@ -114,7 +62,7 @@ export default function Work() {
             }}
             onClick={() =>
               setCurrentExperienceIndex(
-                (currentExperienceIndex + 1) % experiences.length
+                (currentExperienceIndex + 1) % (experiences?.length || 1)
               )
             }
             className="w-8 ml-4 relative"
@@ -142,7 +90,7 @@ export default function Work() {
             className="w-[20%] inline-block border-b-4 border-work-highlight"
           ></motion.span>
         </h2>
-        <Experience xp={experiences[currentExperienceIndex]} />
+        {experiences && <Experience xp={experiences[currentExperienceIndex]} />}
       </div>
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-4xl font-bold tracking-wide">
@@ -192,7 +140,7 @@ export default function Work() {
           </div>
         </h2>
         <div className="grid grid-cols-1 gap-16 mt-8 p-6">
-          {projects.map((project) => (
+          {projects?.map((project) => (
             <ProjectLinks project={project} key={project.id} />
           ))}
         </div>
@@ -238,7 +186,9 @@ export default function Work() {
               ease: "easeIn",
             }}
             onClick={() =>
-              setCurrentSkillIndex((currentSkillIndex + 1) % skillsData.length)
+              setCurrentSkillIndex(
+                (currentSkillIndex + 1) % (skills?.length || 1)
+              )
             }
             className="w-8 ml-4 relative"
           >
@@ -265,7 +215,7 @@ export default function Work() {
             className="w-[20%] inline-block border-b-4 border-work-highlight"
           ></motion.span>
         </h2>
-        <SkillSet skill={skillsData[currentSkillIndex]} />
+        {skills && <SkillSet skill={skills[currentSkillIndex]} />}
       </div>
     </>
   );

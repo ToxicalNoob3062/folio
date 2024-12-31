@@ -83,7 +83,7 @@ export default function Home() {
         <Intro
           heading={"Let's rock together"}
           content={
-            "Lorem ipsum dolor sit, amet **consectetur** adipisicing elit. Architecto, impedit! Sunt **amet** nemo minima impedit **distinctio** ratione, natus necessitatibus. Voluptatem atque consequatur unde nobis quisquam eligendi quaerat dignissimos sit dolorum!"
+            "I am a **versatile software developer** passionate about solving **industry-grade problems** with a **unique touch**. Dedicated to adapting the **best tools** for each project, I strive for **perfection**, embrace **challenges**, and prioritize **client satisfaction**."
           }
         >
           <button

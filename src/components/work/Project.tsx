@@ -1,20 +1,10 @@
 import { motion } from "framer-motion";
 import Img from "../common/Img";
 import Text from "../common/Bold";
-
-export type Project = {
-  id: number;
-  icon: string;
-  title: string;
-  description: string;
-  links: {
-    live?: string;
-    source?: string;
-    video?: string;
-  };
-};
+import { Project } from "@/extras/types";
 
 export default function ProjectLinks({ project }: { project: Project }) {
+  const projectUrl = `${process.env.NEXT_PUBLIC_S3_URL}/projects/${project.icon}`;
   const links = project.links;
   return (
     <motion.div
@@ -29,7 +19,7 @@ export default function ProjectLinks({ project }: { project: Project }) {
       className="flex-col flex gap-8 justify-center shadow-md shadow-work-secondary relative p-8 rounded-xl"
     >
       <div className="w-20 h-20 relative">
-        <Img src={project.icon} alt={project.title} />
+        <Img src={projectUrl} alt={project.title} />
       </div>
       <div>
         <h4 className="text-2xl text-work-lining font-bold tracking-wide mb-4">
@@ -40,42 +30,25 @@ export default function ProjectLinks({ project }: { project: Project }) {
         </div>
       </div>
       <ul className="flex gap-4 border-b-2 border-work-lining mr-4 absolute top-0 right-0 p-3">
-        {links.live && (
-          <li className="w-8 h-8">
-            <a
-              className="w-full h-full relative"
-              href={links.live}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Img src="/explore.png" alt="explore" />
-            </a>
-          </li>
-        )}
-        {links.source && (
-          <li className="w-8 h-8 relative">
-            <a
-              className="w-full h-full relative"
-              href={links.source}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Img src="/github.png" alt="github" />
-            </a>
-          </li>
-        )}
-        {links.video && (
-          <li className="w-8 h-8 relative">
-            <a
-              className="w-full h-full relative"
-              href={links.video}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Img src="/youtube.png" alt="youtube" />
-            </a>
-          </li>
-        )}
+        {links.map((link, index) => {
+          const icon = link.includes("github")
+            ? "/github.png"
+            : link.includes("youtu.be")
+            ? "/youtube.png"
+            : "/explore.png";
+          return (
+            <li key={index} className="w-8 h-8">
+              <a
+                className="w-full h-full relative"
+                href={link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Img src={icon} alt={icon} />
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </motion.div>
   );

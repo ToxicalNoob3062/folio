@@ -1,13 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Text from "../common/Bold";
-
-export type XP = {
-  id: number;
-  role: string;
-  company: string;
-  date: string;
-  points: string[];
-};
+import { XP } from "@/extras/types";
 
 const containerVariants = {
   initial: { opacity: 0, x: 30 },
