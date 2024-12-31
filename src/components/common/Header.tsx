@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Route } from "@/extras/routes";
+import { Route } from "../../extras/types";
 import Image from "next/image";
 
 export default function Header({

@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { updateRouteStatus } from "@/extras/routes";
+import { routeStatus, updateRouteStatus } from "@/extras/routes";
 import { Route } from "@/extras/types";
 import Header from "@/components/common/Header";
 import { useState } from "react";
@@ -36,7 +36,8 @@ export default function RootLayout({
 
   const changeRoute = (newRoute: Route) => {
     updateRouteStatus(newRoute);
-    router.push(newRoute !== "home" ? `/${newRoute}` : `/`);
+    if (routeStatus.present !== routeStatus.past)
+      router.push(newRoute !== "home" ? `/${newRoute}` : `/`);
     setIsOpen((prev) => !prev);
   };
 
