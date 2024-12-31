@@ -20,16 +20,19 @@ export default function Work() {
   const { data: skills } = useQuery<Skill[]>({
     queryKey: ["skills"],
     queryFn: fetchAll("skills"),
+    staleTime: Infinity,
   });
 
   const { data: projects } = useQuery<Project[]>({
     queryKey: ["projects"],
     queryFn: fetchAll("projects"),
+    staleTime: Infinity,
   });
 
   const { data: experiences } = useQuery<XP[]>({
     queryKey: ["experiences"],
     queryFn: fetchAll("experiences"),
+    staleTime: Infinity,
   });
 
   return (

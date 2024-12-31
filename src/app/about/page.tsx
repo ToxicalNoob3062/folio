@@ -21,6 +21,7 @@ export default function About() {
   const { data: gallerySet } = useQuery<Gallery[]>({
     queryKey: ["gallery"],
     queryFn: fetchAll("gallery"),
+    staleTime: Infinity,
   });
   const gallery = gallerySet ? gallerySet[0] : { images: [] };
   const prefix = process.env.NEXT_PUBLIC_S3_URL + "/gallery/";

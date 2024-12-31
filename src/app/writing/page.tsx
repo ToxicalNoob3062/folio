@@ -12,6 +12,7 @@ export default function Writing() {
   const { data: articles } = useQuery<Article[]>({
     queryKey: ["articles"],
     queryFn: fetchAll("articles"),
+    staleTime: Infinity,
   });
   return (
     <div className="min-h-screen">
