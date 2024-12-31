@@ -34,3 +34,8 @@ export type Gallery = {
   id: number;
   images: string[];
 };
+
+export type Contact = {
+  platform: string;
+  link: string;
+};

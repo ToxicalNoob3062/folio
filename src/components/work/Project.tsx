@@ -34,7 +34,7 @@ export default function ProjectLinks({ project }: { project: Project }) {
           const icon = link.includes("github")
             ? "/github.png"
             : link.includes("youtu.be")
-            ? "/youtube.png"
+            ? "/tube.png"
             : "/explore.png";
           return (
             <li key={index} className="w-8 h-8">

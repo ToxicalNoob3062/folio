@@ -1,9 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Social from "./Social"; // Assuming you have a Social component
+import { Contact } from "@/extras/types";
+import Social from "./Social";
 
 export default function SocialBar({ route }: { route: string }) {
-  const socials = ["github", "linkedin", "facebook", "email"];
+  const socials: Contact[] = [
+    {
+      platform: "github",
+      link: "https://github.com/ToxicalNoob3062",
+    },
+    {
+      platform: "linkedin",
+      link: "https://www.linkedin.com/in/rahat-bin-taleb-a2110b241",
+    },
+    {
+      platform: "youtube",
+      link: "https://www.youtube.com/@rahatsshowcase8614/featured",
+    },
+    {
+      platform: "email",
+      link: "mailto:rahat3062@gmail.com",
+    },
+    {
+      platform: "facebook",
+      link: "https://www.facebook.com/ToxicalNoob",
+    },
+  ];
   const [showSocials, setShowSocials] = useState(false);
 
   return (
@@ -27,13 +49,13 @@ export default function SocialBar({ route }: { route: string }) {
       <div className="flex items-center gap-4">
         {socials.map((social, i) => (
           <motion.div
-            key={social}
+            key={i}
             initial={{ opacity: 0, x: -5 }}
             animate={showSocials ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.1, delay: showSocials ? i * 0.1 : 0 }}
             className="w-8 h-8"
           >
-            <Social category={social} />
+            <Social contact={social} />
           </motion.div>
         ))}
       </div>
