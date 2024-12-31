@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} antialiased font-bitter w-screen h-screen p-3 flex text-${route}-primary`}
+        className={`${bitter.variable} antialiased font-bitter w-screen h-screen p-3 sm:p-5 flex text-${route}-primary`}
       >
         <div
           className={`bg-${route}-bg relative z-10 flex-grow flex flex-col overflow-hidden`}

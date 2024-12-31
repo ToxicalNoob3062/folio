@@ -87,7 +87,7 @@ export default function Modal({
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-col p-8 gap-20 items-start"
+        className="flex flex-col p-8 sm:p-10 gap-20 items-start"
       >
         {[
           { route: "home", id: 1 },

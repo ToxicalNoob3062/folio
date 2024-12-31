@@ -43,10 +43,10 @@ export default function SocialBar({ route }: { route: string }) {
         delay: 0.5,
       }}
       onAnimationComplete={() => setShowSocials(true)}
-      className="flex w-full p-6 items-center gap-4"
+      className="flex w-full p-6 mt-8 sm:p-10 sm:mt-16 items-center gap-4 sm:gap-8"
     >
       <div className={`border-t-4 border-${route}-lining w-20`}></div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 sm:gap-8">
         {socials.map((social, i) => (
           <motion.div
             key={i}

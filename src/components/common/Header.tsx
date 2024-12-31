@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Route } from "../../extras/types";
-import Image from "next/image";
+import Img from "./Img";
 
 export default function Header({
   route,
@@ -12,26 +12,19 @@ export default function Header({
 }) {
   const [isOpen, changeRoute] = control;
   return (
-    <div className="w-full h-20 p-2 flex justify-between items-center z-30 relative">
+    <div className="w-full h-20 p-6 sm:h-32 sm:p-10 flex justify-between items-center z-30 relative">
       <div className="flex h-full items-center">
-        <div className="relative w-11 h-11">
-          <Image
-            className="object-contain"
-            src={`/icon-${route}.png`}
-            alt="Signature Icon"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, (max-width: 1536px) 20vw, 16vw" // Responsive sizes
-            priority
-          />
+        <div className="relative w-11 h-11 sm:w-16 sm:h-16">
+          <Img src={`/icon-${route}.png`} alt="Logo" />
         </div>
         <div
-          className={`h-[50%] ml-2 mr-4 border-r-2 border-${route}-primary`}
+          className={`h-full ml-2 mr-4 border-r-2 border-${route}-primary`}
         ></div>
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.button
               key="close"
-              className="tracking-widest text-md font-semibold"
+              className="tracking-widest text-md sm:text-lg font-semibold"
               initial={{ y: -5, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 5, opacity: 0 }}
@@ -43,7 +36,7 @@ export default function Header({
           ) : (
             <motion.button
               key="open"
-              className="tracking-widest text-md font-semibold"
+              className="tracking-widest text-md sm:text-lg font-semibold"
               initial={{ y: 5, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -5, opacity: 0 }}
@@ -55,7 +48,14 @@ export default function Header({
           )}
         </AnimatePresence>
       </div>
-      <button className="tracking-widest text-md font-semibold">HIRE ME</button>
+      <div className="flex h-full items-center sm:gap-6">
+        <div className="relative hidden sm:w-12 sm:h-12 sm:block">
+          <Img src={`/hire-${route}.png`} alt="Logo" />
+        </div>
+        <button className="tracking-widest text-md sm:text-lg  font-semibold">
+          HIRE ME
+        </button>
+      </div>
     </div>
   );
 }
