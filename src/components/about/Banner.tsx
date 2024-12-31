@@ -34,7 +34,7 @@ export default function Banner({ img, alt }: { img: string; alt: string }) {
         <div className="h-1/2 w-full bg-about-secondary"></div>
       </motion.div>
       {/* Responsive Image */}
-      <div className="relative w-full">
+      <div className="relative w-full h-">
         <Img src={img} alt={alt} />
       </div>
     </div>
