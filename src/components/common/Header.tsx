@@ -12,7 +12,7 @@ export default function Header({
 }) {
   const [isOpen, changeRoute] = control;
   return (
-    <div className="w-full h-20 p-6 sm:h-32 sm:p-10 flex justify-between items-center z-30 relative">
+    <div className="w-full h-20 p-6 sm:h-32 sm:p-10 wide_short:h-20 wide_short:p-6 flex justify-between items-center z-30 relative">
       <div className="flex h-full items-center">
         <motion.div
           whileHover={{ scale: 1.1 }}

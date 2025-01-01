@@ -43,7 +43,7 @@ export default function SocialBar({ route }: { route: string }) {
         delay: 0.5,
       }}
       onAnimationComplete={() => setShowSocials(true)}
-      className="flex w-full p-6 mt-8 sm:p-10 sm:mt-16 items-center gap-4 sm:gap-8"
+      className="flex w-full p-6 mt-8 sm:p-10 wide_short:p-4 sm:mt-16 wide_short:mt-0 items-center gap-4 sm:gap-8"
     >
       <div className={`border-t-4 border-${route}-lining w-20`}></div>
       <div className="flex items-center gap-4 sm:gap-8">

@@ -73,7 +73,7 @@ export default function Modal({
   }, [isPresent, scope, animate, safeToRemove, setCompletion, setReloaded]);
   return (
     <motion.div
-      className={`bg-${routeStatus.present}-secondary absolute top-0 left-0 w-full h-full z-20 pt-20`}
+      className={`flex flex-col bg-${routeStatus.present}-secondary absolute top-0 left-0 w-full h-full z-20 pt-20`}
       initial={{ top: "-100%" }}
       animate={{ top: "0%" }}
       ref={scope}
@@ -87,7 +87,7 @@ export default function Modal({
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="flex flex-col p-8 sm:p-10 gap-20 items-start"
+        className="flex-grow flex flex-col p-8 sm:p-10 justify-between items-start max-h-[40rem] lg:max-h-[45-rem]"
       >
         {[
           { route: "home", id: 1 },

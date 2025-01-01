@@ -66,6 +66,7 @@ export default {
       },
       screens: {
         xs: "375px", // Custom breakpoint
+        wide_short: { raw: "(min-width: 640px) and (max-height: 900px)" },
       },
     },
   },
