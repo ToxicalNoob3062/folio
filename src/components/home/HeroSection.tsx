@@ -1,5 +1,5 @@
 import { useCompletion } from "@/context/CompletionContext";
-import { easeIn, motion } from "framer-motion";
+import { delay, easeIn, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import Img from "../common/Img";
 import { getStripingStyle } from "@/extras/styles";
@@ -15,8 +15,8 @@ export default function HeroSection() {
   const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <div className="min-h-screen h-screen w-full flex flex-col">
-      <div className="h-full w-full flex flex-col justify-start items-start lg:flex-row-reverse ">
-        <div className="w-full h-1/2 lg:w-1/2 relative z-0 ">
+      <div className="h-full w-full flex flex-col justify-start items-start lg:flex-row-reverse">
+        <div className="w-full h-1/2 lg:h-4/5 lg:w-1/2 relative z-0 ">
           {/* Image Animation */}
           {completion && (
             <motion.div
@@ -61,12 +61,12 @@ export default function HeroSection() {
           )}
         </div>
         {/* Hero Text Animations */}
-        <div className="p-6 mx-auto h-1/2 lg:p-14 flex flex-col lg:h-full  lg:w-1/2 z-20 ">
+        <div className="p-6 mx-auto h-1/2 lg:p-14 flex flex-col lg:h-full  lg:w-1/2 z-20">
           {completion && (
-            <div className="h-fit lg:h-2/5 flex flex-col justify-start lg:justify-end items-center lg:items-start mb-8">
+            <div className="h-fit lg:h-2/5  flex flex-col justify-start lg:justify-end items-center lg:items-start mb-8">
               <motion.h1
                 initial={{
-                  y: 50,
+                  y: 60,
                   opacity: 0,
                 }}
                 animate={{
@@ -77,16 +77,31 @@ export default function HeroSection() {
                   duration: 0.5,
                   easeIn,
                 }}
-                className=" text-center text-4xl xs:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl  lg:text-start w-[95%] lg:w-fit "
+                className="text-center text-4xl xs:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl  lg:text-start w-[95%] lg:w-fit "
               >
                 Hello Dear, I am <span className="font-bold">Rahat</span>
               </motion.h1>
-              <div className="hidden lg:block mt-8 text-xl 2xl:text-3xl font-medium ">
+              <motion.div
+                initial={{
+                  y: 60,
+                  opacity: 0,
+                }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.5,
+                  easeIn,
+                }}
+                className="hidden lg:block mt-8 text-xl 2xl:text-2xl font-medium "
+              >
                 <Text
                   className="leading-relaxed"
                   txt="Showing my expertise in field of **web**, **software engineering** and **cloud arhitecturing** since 2022."
                 />
-              </div>
+              </motion.div>
             </div>
           )}
           <ScrollIndicator delay={1} />
