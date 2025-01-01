@@ -64,6 +64,9 @@ export default {
         bitter: ["var(--font-bitter)", "serif"],
         bitter_italics: ["var(--font-bitter-italics)", "serif"],
       },
+      screens: {
+        xs: "375px", // Custom breakpoint
+      },
     },
   },
   safelist: generateSafelist(extendedColors),

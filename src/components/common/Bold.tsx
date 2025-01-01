@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Text({ txt }: { txt: string }) {
+interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
+  txt: string;
+}
+
+export default function Text({ txt, ...props }: TextProps) {
   const parseText = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*)/g); // Split text by **bold** markers
     return parts.map((part, index) => {
@@ -15,5 +19,5 @@ export default function Text({ txt }: { txt: string }) {
     });
   };
 
-  return <span>{parseText(txt)}</span>;
+  return <span {...props}>{parseText(txt)}</span>;
 }

@@ -4,7 +4,7 @@ import { easeIn, motion } from "framer-motion";
 export default function ScrollIndicator({ delay }: { delay?: number }) {
   const { completion } = useCompletion();
   return (
-    <div className="flex-grow flex flex-col items-center justify-center ">
+    <div className="flex-grow flex flex-col items-center justify-center">
       {completion && (
         <>
           <motion.h4
@@ -19,7 +19,7 @@ export default function ScrollIndicator({ delay }: { delay?: number }) {
               delay: delay || 0,
               easeIn,
             }}
-            className="font-semibold text-gray-400 text-base tracking-[0.3em] mr-4 wave-container"
+            className="font-semibold text-gray-400 text-sm xs:text-base tracking-[0.3em] mr-4 wave-container"
           >
             {["S", "C", "R", "O", "L", "L"].map((letter, index) => (
               <span className="wave-letter" key={index}>

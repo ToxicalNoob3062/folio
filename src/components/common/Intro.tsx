@@ -50,10 +50,10 @@ export default function Intro({
         },
       };
   return (
-    <div className="p-6">
+    <div className="p-6 sm:mx-auto sm:p-4 md:p-0 max-w-screen-sm lg:max-w-none lg:w-1/2 lg:mx-0 lg:p-6">
       <motion.h1
         initial={{
-          x: 50,
+          x: "10%",
           opacity: 0,
         }}
         {...headingProps}
@@ -61,15 +61,16 @@ export default function Intro({
           duration: 0.5,
           easeIn,
         }}
-        className="text-5xl font-semibold w-72"
+        className="text-4xl xs:text-5xl md:text-6xl 2xl:text-7xl  font-bold w-[90%]"
       >
         {heading}
-        <span className={`text-6xl text-${routeStatus.present}-highlight`}>
+        <span
+          className={`text-5xl xs:text-6xl xl:text-8xl text-${routeStatus.present}-highlight`}
+        >
           .
         </span>
-        <br />
         <div
-          className={`mt-3 border-b-4 border-${routeStatus.present}-highlight w-[30%]`}
+          className={`mt-3 lg:mt-6 xl:mt-8 2xl:mt-10 border-b-4 border-${routeStatus.present}-highlight w-[30%]`}
         ></div>
       </motion.h1>
       <motion.div
@@ -84,8 +85,8 @@ export default function Intro({
           easeIn,
         }}
       >
-        <div className="pt-6 text-xl leading-relaxed">
-          <Text txt={content} />
+        <div className="pt-6 xl:pt-8 2xl:pt-10 text-md  xs:text-xl xl:text-2xl font-medium">
+          <Text className="leading-relaxed" txt={content} />
         </div>
         {children ? children : null}
       </motion.div>

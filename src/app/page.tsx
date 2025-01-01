@@ -1,85 +1,22 @@
 "use client";
 import { routeStatus, transitTo } from "@/extras/routes";
-import { easeIn, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
-import { useCompletion } from "@/context/CompletionContext";
-import Intro from "@/components/common/Intro";
-import ScrollIndicator from "@/components/common/Scroll";
 import { getStripingStyle } from "@/extras/styles";
 import { Route } from "@/extras/types";
-import Img from "@/components/common/Img";
+import Intro from "@/components/common/Intro";
+import HeroSection from "@/components/home/HeroSection";
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
-  const { completion } = useCompletion();
   const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <>
       {/* hero section */}
-      <div className="min-h-screen flex flex-col items-center">
-        <div className="">
-          <div className="w-96 h-96 relative z-0 ">
-            {/* Image Animation */}
-            {completion && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }} // Ensure the image starts invisible and small
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                }}
-                transition={{
-                  type: "spring", // Use spring transition
-                  stiffness: 100, // Adjust stiffness for stronger spring effect
-                  damping: 10, // Controls how "bouncy" the spring is
-                  duration: 0.8,
-                  delay: 0.5,
-                }}
-                className="w-full h-full relative z-20" // Ensure image is always above
-              >
-                <Img src="/home-me.png" alt="Rahat" />
-              </motion.div>
-            )}
-            {/* Stripe Background Animation */}
-            {completion && (
-              <motion.div
-                initial={{ x: "-100%", y: "-33%", opacity: 0 }} // Start off-screen and invisible
-                animate={completion ? { x: "50%", y: "-33%", opacity: 1 } : {}}
-                transition={{
-                  duration: 0.8,
-                  delay: 1,
-                  ease: "easeInOut", // Smooth slide-in
-                }}
-                className="w-80 h-52 rounded-md absolute top-1/2 right-1/2 z-10" // Ensure stripe is below image
-                style={getStripingStyle(color, 10, 10)}
-              ></motion.div>
-            )}
-          </div>
-          {/* Hero Text Animations */}
-          {completion && (
-            <motion.h1
-              initial={{
-                y: 50,
-                opacity: 0,
-              }}
-              animate={{
-                y: 0,
-                opacity: 1,
-              }}
-              transition={{
-                duration: 0.5,
-                easeIn,
-              }}
-              className="text-center p-6 text-5xl"
-            >
-              Hello Dear, I am <br /> <span className="font-bold">Rahat</span>
-            </motion.h1>
-          )}
-        </div>
-        <ScrollIndicator delay={2} />
-      </div>
+      <HeroSection />
       {/* Call to action section */}
-      <div className="flex-shrink-0 mt-28">
+      <div className="mt-28">
         <Intro
           heading={"Let's rock together"}
           content={
@@ -88,7 +25,7 @@ export default function Home() {
         >
           <button
             onClick={() => transitTo("work", setSwapPage)}
-            className="mt-8 py-3 px-6 border-2 border-home-lining text-home-lining rounded-lg text-xl font-bold"
+            className="mt-8 py-4 px-4 xs:px-6 xl:px-8 2xl:px-10 2xl:py-6 border-2 border-home-lining text-home-lining rounded-lg text-md xs:text-xl font-bold"
             style={getStripingStyle(color, 4, 5)}
           >
             About my approach
@@ -96,9 +33,9 @@ export default function Home() {
         </Intro>
       </div>
       {/* Signature Poem */}
-      <div className="mt-28 w-full ">
+      <div className="mt-28 xl:mt-64 2xl:mt-72 w-full ">
         <div className="text-center w-fit mx-auto">
-          <h1 className="text-home-primary text-5xl font-semibold">
+          <h1 className="text-home-primary text-4xl xs:text-5xl md:text-6xl 2xl:text-7xl  font-bold">
             {"Mind's Play"}
             <br />
             <div className="flex justify-center">
@@ -119,11 +56,11 @@ export default function Home() {
                   duration: 1,
                   ease: "easeIn",
                 }}
-                className="inline-block border-b-4 border-home-highlight"
+                className="inline-block border-b-4 border-home-highlight lg:mt-5"
               ></motion.span>
             </div>
           </h1>
-          <h3 className="text-right text-lg font-bold mt-2 text-home-lining">
+          <h3 className="text-right text-lg lg:text-xl xl:text-2xl font-bold mt-2 text-home-lining">
             @ Rahat
           </h3>
         </div>
@@ -144,22 +81,30 @@ export default function Home() {
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="w-full flex justify-center items-center"
+          className="w-fit mt-10 mx-auto flex flex-col justify-center items-center font-medium text-md xs:text-xl xl:text-2xl"
         >
-          <p className="italic text-home-primary my-8 text-balance leading-loose font-medium">
-            <span className="text-5xl font-bold mr-2 align-middle">“</span>
-            Nothing is easy, nothing is hard! <br />
-            {"It's"} you who choose to play your card.
-            <br />
-            The brain is dumb, the brain is silly, <br />
-            Where subconscious rules
-            <br />
-            and conscious gets chilly.
-            <br />
-            So why lose the game of mind? <br />
-            Hurry up and make me sign!
-            <span className="text-5xl font-bold ml-4 align-middle">”</span>
+          {/* Start Quotation Mark */}
+          <div className="w-full flex justify-start items-start">
+            <span className="text-5xl font-bold align-top leading-none">“</span>
+          </div>
+
+          {/* Poem Content */}
+          <p className="w-fit italic text-home-primary my-2 text-md lg:text-xl xl:text-2xl flex flex-col gap-2 lg:gap-4 xl:gap-6 justify-center items-center">
+            <span>Nothing is easy, nothing is hard!</span>
+            <span>{"It's"} you who choose to play your card.</span>
+            <span>The brain is dumb, the brain is silly,</span>
+            <span>Where subconscious rules</span>
+            <span>and conscious gets chilly.</span>
+            <span>So why lose the game of mind?</span>
+            <span>Hurry up and make me sign!</span>
           </p>
+
+          {/* End Quotation Mark */}
+          <div className="w-full flex justify-end items-end">
+            <span className="text-5xl font-bold align-bottom leading-none">
+              ”
+            </span>
+          </div>
         </motion.div>
       </div>
     </>
