@@ -28,7 +28,7 @@ export default function NavLink({
       className=" w-full flex items-baseline md:gap-24"
     >
       <button
-        className="w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 font-bold text-start text-5xl sm:text-6xl 2xl:text-7xl wide_short:text-5xl  hover:text-white"
+        className="w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 font-bold text-start text-5xl sm:text-6xl 2xl:text-7xl ws:text-5xl  hover:text-white"
         onClick={() => {
           changeRoute(path as Route);
         }}

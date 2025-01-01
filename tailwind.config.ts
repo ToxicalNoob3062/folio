@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defTheme from "tailwindcss/defaultTheme";
 
 const generateSafelist = (
   colors: Record<string, Record<string, string> | string>
@@ -62,12 +63,12 @@ export default {
       colors: extendedColors,
       fontFamily: {
         bitter: ["var(--font-bitter)", "serif"],
-        bitter_italics: ["var(--font-bitter-italics)", "serif"],
       },
-      screens: {
-        xs: "375px", // Custom breakpoint
-        wide_short: { raw: "(min-width: 640px) and (max-height: 900px)" },
-      },
+    },
+    screens: {
+      xs: "375px", // Custom breakpoint for min-width
+      ...defTheme.screens,
+      ws: { raw: "(min-width: 1024px) and (max-height: 900px)" }, // Custom breakpoint for min-width and max-height
     },
   },
   safelist: generateSafelist(extendedColors),
