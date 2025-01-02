@@ -1,9 +1,9 @@
 "use client";
 import { easeIn, motion } from "framer-motion";
-import Text from "./Bold";
+import Text from "../common/Bold";
 import { routeStatus } from "@/extras/routes";
 
-export default function Intro({
+export default function CallToAction({
   heading,
   content,
   children,
@@ -50,7 +50,7 @@ export default function Intro({
         },
       };
   return (
-    <div className="max-w-screen-lg w-full">
+    <div className="p-6 sm:mx-auto sm:p-4 md:p-0 max-w-screen-sm lg:max-w-none lg:w-1/2 lg:mx-0 lg:p-6">
       <motion.h1
         initial={{
           x: "10%",
@@ -85,7 +85,7 @@ export default function Intro({
           easeIn,
         }}
       >
-        <div className="pt-6 xl:pt-8 2xl:pt-10 text-lg  xs:text-xl lg:text-2xl font-medium max-w-screen-md">
+        <div className="pt-6 xl:pt-8 2xl:pt-10 text-md  xs:text-xl xl:text-2xl font-medium">
           <Text className="leading-relaxed" txt={content} />
         </div>
         {children ? children : null}

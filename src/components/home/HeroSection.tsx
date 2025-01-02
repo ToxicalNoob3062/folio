@@ -1,5 +1,4 @@
 import { useCompletion } from "@/context/CompletionContext";
-import { delay, easeIn, motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import Img from "../common/Img";
 import { getStripingStyle } from "@/extras/styles";
@@ -8,6 +7,7 @@ import { routeStatus } from "@/extras/routes";
 import { Route } from "@/extras/types";
 import ScrollIndicator from "../common/Scroll";
 import Text from "@/components/common/Bold";
+import { easeIn, motion } from "framer-motion";
 
 export default function HeroSection() {
   const { completion } = useCompletion();

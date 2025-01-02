@@ -5,8 +5,8 @@ import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
 import { getStripingStyle } from "@/extras/styles";
 import { Route } from "@/extras/types";
-import Intro from "@/components/common/Intro";
 import HeroSection from "@/components/home/HeroSection";
+import CallToAction from "@/components/home/CallToAction";
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
@@ -17,7 +17,7 @@ export default function Home() {
       <HeroSection />
       {/* Call to action section */}
       <div className="mt-28">
-        <Intro
+        <CallToAction
           heading={"Let's rock together"}
           content={
             "I am a **versatile software developer** passionate about solving **industry-grade problems** with a **unique touch**. Dedicated to adapting the **best tools** for each project, I strive for **perfection**, embrace **challenges**, and prioritize **client satisfaction**."
@@ -30,7 +30,7 @@ export default function Home() {
           >
             About my approach
           </button>
-        </Intro>
+        </CallToAction>
       </div>
       {/* Signature Poem */}
       <div className="mt-28 xl:mt-64 2xl:mt-72 w-full ">
