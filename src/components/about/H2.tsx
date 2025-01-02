@@ -3,7 +3,7 @@ import { easeIn, motion } from "framer-motion";
 
 export default function H2({ text }: { text: string }) {
   return (
-    <h2 className="text-4xl font-bold">
+    <h2 className="text-4xl xl:text-5xl font-bold">
       {text}
       <motion.span
         initial={{ opacity: 0, x: 30 }}

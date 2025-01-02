@@ -1,16 +1,13 @@
 "use client";
-import { routeStatus, transitTo } from "@/extras/routes";
+import { transitTo } from "@/extras/routes";
 import { motion } from "framer-motion";
-import { extendedColors } from "../../tailwind.config";
 import { useSwapPage } from "@/context/TransitContext";
-import { getStripingStyle } from "@/extras/styles";
-import { Route } from "@/extras/types";
 import HeroSection from "@/components/home/HeroSection";
 import CallToAction from "@/components/home/CallToAction";
+import Button from "@/components/common/Button";
 
 export default function Home() {
   const { setSwapPage } = useSwapPage();
-  const color = extendedColors[routeStatus.present as Route].secondary;
   return (
     <>
       {/* hero section */}
@@ -23,13 +20,12 @@ export default function Home() {
             "I am a **versatile software developer** passionate about solving **industry-grade problems** with a **unique touch**. Dedicated to adapting the **best tools** for each project, I strive for **perfection**, embrace **challenges**, and prioritize **client satisfaction**."
           }
         >
-          <button
+          <Button
             onClick={() => transitTo("work", setSwapPage)}
-            className="mt-8 py-4 px-4 xs:px-6 xl:px-8 2xl:px-10 2xl:py-6 border-2 border-home-lining text-home-lining rounded-lg text-md xs:text-xl font-bold"
-            style={getStripingStyle(color, 4, 5)}
+            txt="About my approach"
           >
-            About my approach
-          </button>
+            Know more
+          </Button>
         </CallToAction>
       </div>
       {/* Signature Poem */}

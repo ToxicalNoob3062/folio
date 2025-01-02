@@ -9,7 +9,7 @@ import Img from "../common/Img";
 export default function Banner({ img, alt }: { img: string; alt: string }) {
   const color = extendedColors[routeStatus.present as Route];
   return (
-    <div className="relative w-full overflow-hidden z-10 rounded-md">
+    <div className="relative w-full h-fit overflow-hidden z-10 rounded-md ">
       <motion.div
         initial={{
           top: "0%",
@@ -33,10 +33,7 @@ export default function Banner({ img, alt }: { img: string; alt: string }) {
         {/* Solid Secondary Background */}
         <div className="h-1/2 w-full bg-about-secondary"></div>
       </motion.div>
-      {/* Responsive Image */}
-      <div className="relative w-full">
-        <Img src={img} alt={alt} />
-      </div>
+      <Img src={img} alt={alt} />
     </div>
   );
 }

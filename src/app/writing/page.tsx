@@ -15,7 +15,7 @@ export default function Writing() {
     staleTime: Infinity,
   });
   return (
-    <div className="min-h-screen flex flex-col items-center p-4  xs:p-6 sm:p-8 lg:p-10 2xl:p-12">
+    <div className="min-h-screen flex flex-col items-center p-4 xs:p-6 sm:p-8 lg:p-10">
       <div className="flex-grow flex flex-col items-start">
         {completion && (
           <Intro
