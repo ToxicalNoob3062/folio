@@ -2,7 +2,7 @@
 import { easeIn, motion } from "framer-motion";
 import Text from "../common/Bold";
 import { routeStatus } from "@/extras/routes";
-import { getDottedStyle, getStripingStyle } from "@/extras/styles";
+import { getDottedStyle } from "@/extras/styles";
 import { extendedColors } from "../../../tailwind.config";
 import { Route } from "@/extras/types";
 import Img from "../common/Img";
