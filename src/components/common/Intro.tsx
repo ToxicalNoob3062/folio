@@ -85,7 +85,7 @@ export default function Intro({
           easeIn,
         }}
       >
-        <div className="pt-6 xl:pt-8 2xl:pt-10 text-lg  xs:text-xl lg:text-2xl font-medium w-full">
+        <div className="pt-6 xl:pt-8 2xl:pt-10 text-lg  xs:text-xl lg:text-2xl w-full">
           <Text className="leading-relaxed" txt={content} />
         </div>
         {children ? children : null}

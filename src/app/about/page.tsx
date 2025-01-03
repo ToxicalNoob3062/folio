@@ -103,7 +103,7 @@ export default function About() {
           >
             <Img src="/thoughts.png" alt="thoughts" />
           </motion.div>
-          <div className="text-lg leading-relaxed flex flex-col gap-8 p-6 lg:w-1/2">
+          <div className="text-lg lg:text-xl leading-relaxed flex flex-col gap-8 p-6 lg:w-1/2">
             <H2 text={"Versatality"} />
             <Text txt="My biggest strength has always been my **versatility** —exploring various branches of **computer science.** From **data representation** to **data safety**, I’ve tackled diverse challenges:" />
             <ul className="list-disc list-outside pl-8 flex flex-col gap-4">
@@ -127,7 +127,7 @@ export default function About() {
           </div>
         </div>
         <div className="lg:flex mt-40">
-          <div className="text-lg leading-relaxed flex flex-col gap-8 p-6 lg:w-1/2 ">
+          <div className="text-lg lg:text-xl leading-relaxed flex flex-col gap-8 p-6 lg:w-1/2 ">
             <H2 text={"Hobbies"} />
             <Text txt="Outside of coding, I love teaching, playing with my pet **Meera** and sharing knowledge through **educational content**, **poetry**, and **blog posts** to contribute to the community. I also enjoy **mobile photography**, **watching movies**, and **cooking occasionally**, as well as participating in **volunteer activities** to support organizations in achieving their **social goals.**" />
           </div>

@@ -95,7 +95,7 @@ export default function HeroSection() {
                   delay: 0.5,
                   easeIn,
                 }}
-                className="hidden lg:block mt-8 text-xl 2xl:text-2xl font-medium "
+                className="hidden lg:block mt-8 text-xl 2xl:text-2xl  "
               >
                 <Text
                   className="leading-relaxed"

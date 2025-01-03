@@ -85,7 +85,7 @@ export default function CallToAction({
           easeIn,
         }}
       >
-        <div className="pt-6 xl:pt-8 2xl:pt-10 text-md  xs:text-xl xl:text-2xl font-medium">
+        <div className="pt-6 xl:pt-8 2xl:pt-10 text-md  xs:text-xl xl:text-2xl">
           <Text className="leading-relaxed" txt={content} />
         </div>
         {children ? children : null}
