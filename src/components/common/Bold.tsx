@@ -19,5 +19,5 @@ export default function Text({ txt, ...props }: TextProps) {
     });
   };
 
-  return <span {...props}>{parseText(txt)}</span>;
+  return <p {...props}>{parseText(txt)}</p>;
 }

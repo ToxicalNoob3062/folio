@@ -64,6 +64,9 @@ export default {
       fontFamily: {
         bitter: ["var(--font-bitter)", "serif"],
       },
+      boxShadow: {
+        "even-spread": "0 0 10px 3px var(--tw-shadow-color)",
+      },
     },
     screens: {
       xs: "375px", // Custom breakpoint for min-width
