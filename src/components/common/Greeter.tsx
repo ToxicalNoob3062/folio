@@ -17,7 +17,7 @@ export default function Greeter({
 
   return (
     <motion.div
-      className={`bg-${route}-secondary absolute top-0 left-0 w-full h-full z-30 flex justify-center items-center`}
+      className={`bg-${route}-secondary w-full h-full flex justify-center items-center absolute top-0 left-0 z-30`}
       initial={{ top: "0%" }}
       animate={{ top: isPageLoading ? "0%" : "100%" }}
       transition={{ duration: isPageLoading ? 0 : 0.5, delay: 0.5 }}
@@ -31,7 +31,7 @@ export default function Greeter({
         }
       }}
     >
-      <span className="loader"></span>
+      <span className="loader tab:scale-125"></span>
     </motion.div>
   );
 }

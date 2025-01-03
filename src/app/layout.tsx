@@ -52,14 +52,13 @@ export default function RootLayout({
           className={`bg-${route}-bg w-full h-full overflow-hidden flex flex-col relative z-10`}
         >
           <Header route={route} control={[isOpen, changeRoute]} />
-          {/* 
           <QueryClientProvider client={queryClient}>
             <PageLoadingProvider>
               <SwapPageProvider>
                 <CompletionProvider>
-                  <App key={route} route={route}>
+                  {/* <App key={route} route={route}>
                     {children}
-                  </App>
+                  </App> */}
                   <PageTransition
                     isOpen={isOpen}
                     reloaded={reloaded}
@@ -70,7 +69,7 @@ export default function RootLayout({
                 </CompletionProvider>
               </SwapPageProvider>
             </PageLoadingProvider>
-          </QueryClientProvider> */}
+          </QueryClientProvider>
         </div>
       </body>
     </html>
