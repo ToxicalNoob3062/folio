@@ -38,7 +38,7 @@ export default function About() {
           )}
           <ScrollIndicator delay={1} />
         </div>
-        <div className="flex flex-col items-center lg:flex-row-reverse lg:justify-between relative z-0 mt-28 gap-12 lg:gap-0">
+        <div className="flex flex-col items-center lg:flex-row-reverse lg:justify-between relative z-0 mt-40 gap-12 lg:gap-0">
           <div className="lg:w-1/2 lg:flex justify-center items-center ">
             <motion.div
               initial={{
@@ -79,7 +79,7 @@ export default function About() {
             <Text txt="Currently, I’m in an exciting phase of life, actively seeking **co-op career opportunities** to transition from solo development to collaborating with teams and building a strong **industry presence** through **high-quality work**." />
           </div>
         </div>
-        <div className="flex flex-col items-center lg:flex-row lg:justify-between relative z-0 mt-28 gap-12 lg:gap-0">
+        <div className="flex flex-col items-center lg:flex-row lg:justify-between relative z-0 mt-40 gap-12 lg:gap-0">
           <motion.div
             initial={{
               scale: 0,
@@ -126,7 +126,7 @@ export default function About() {
             <Text txt="Recently, I’ve delved into **AI**, learning to train and create models using **TensorFlow**, and I’m eager to deepen my expertise in this field." />
           </div>
         </div>
-        <div className="lg:flex mt-28">
+        <div className="lg:flex mt-40">
           <div className="text-lg leading-relaxed flex flex-col gap-8 p-6 lg:w-1/2 ">
             <H2 text={"Hobbies"} />
             <Text txt="Outside of coding, I love teaching, playing with my pet **Meera** and sharing knowledge through **educational content**, **poetry**, and **blog posts** to contribute to the community. I also enjoy **mobile photography**, **watching movies**, and **cooking occasionally**, as well as participating in **volunteer activities** to support organizations in achieving their **social goals.**" />
@@ -138,7 +138,7 @@ export default function About() {
             ></div>
           </div>
         </div>
-        <div className="grid border-t-4 border-about-highlight grid-cols-1 gap-8 p-6 lg:grid-cols-2 lg:gap-12 mt-28 w-full md:max-w-screen-sm lg:max-w-screen-xl mx-auto">
+        <div className="grid border-t-4 border-about-highlight grid-cols-1 gap-8 p-6 lg:grid-cols-2 lg:gap-12 mt-40 w-full md:max-w-screen-sm lg:max-w-screen-xl mx-auto">
           {gallery?.images.map((item, index) => (
             <Banner key={index} img={prefix + item} alt={item} />
           ))}
