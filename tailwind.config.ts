@@ -69,9 +69,10 @@ export default {
       },
     },
     screens: {
-      xs: "375px", // Custom breakpoint for min-width
-      ...defTheme.screens,
-      ws: { raw: "(min-width: 1024px) and (max-height: 900px)" }, // Custom breakpoint for min-width and max-height
+      tab: "512px",
+      laptop: "1024px",
+      desktop: "2024px",
+      weird: { raw: "(min-width: 1024px) and (max-height: 900px)" },
     },
   },
   safelist: generateSafelist(extendedColors),

@@ -12,23 +12,25 @@ export default function Header({
 }) {
   const [isOpen, changeRoute] = control;
   return (
-    <div className="w-full h-20 p-6 sm:h-32 sm:p-10 ws:h-20 ws:p-6 flex justify-between items-center z-30 relative">
+    <div className="bg-orange-200 w-full h-20 p-6 tab:h-28 tab:p-10 flex justify-between items-center z-30 relative">
+      {/* left side */}
       <div className="flex h-full items-center">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="relative w-11 h-11 sm:w-16 sm:h-16"
-        >
-          <Img src={`/icon-${route}.png`} alt="Logo" />
-        </motion.div>
+        <Img
+          id="brand-logo"
+          className="w-8 tab:w-12 hover:scale-110"
+          src={`/icon-${route}.png`}
+          alt={`${route} icon`}
+        />
         <div
-          className={`h-full ml-2 mr-4 border-r-2 border-${route}-primary`}
-        ></div>
+          id="stick-border"
+          className={`h-3/5 tab:h-4/5 ml-2 mr-4 border-r-2 border-${route}-primary`}
+        />
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.button
               key="close"
               whileHover={{ scale: 1.1 }}
-              className="tracking-widest text-md sm:text-lg font-semibold"
+              className="font-sans text-xs font-semibold tracking-widest"
               initial={{ y: -5, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 5, opacity: 0 }}
@@ -41,7 +43,7 @@ export default function Header({
             <motion.button
               key="open"
               whileHover={{ scale: 1.1 }}
-              className="tracking-widest text-md sm:text-lg font-semibold"
+              className="font-sans text-xs font-semibold tracking-widest"
               initial={{ y: 5, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -5, opacity: 0 }}
@@ -53,16 +55,17 @@ export default function Header({
           )}
         </AnimatePresence>
       </div>
-      <div className="flex h-full items-center sm:gap-6">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="relative hidden sm:w-12 sm:h-12 sm:block"
-        >
-          <Img src={`/hire-${route}.png`} alt="Logo" />
-        </motion.div>
+      {/* right side */}
+      <div className="flex h-full items-center gap-2">
+        <Img
+          id="hire-logo"
+          className="hidden tab:inline-block w-10 hover:scale-110"
+          src={`/hire-${route}.png`}
+          alt="Logo"
+        />
         <motion.button
           whileHover={{ scale: 1.1 }}
-          className="tracking-widest text-md sm:text-lg  font-semibold"
+          className="font-sans text-xs font-semibold tracking-widest"
         >
           HIRE ME
         </motion.button>

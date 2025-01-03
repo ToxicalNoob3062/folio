@@ -46,12 +46,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bitter.variable} antialiased font-bitter w-screen h-screen p-3 sm:p-5 flex text-${route}-primary`}
+        className={`${bitter.variable} antialiased font-bitter text-${route}-primary w-screen h-screen p-3 tab:p-6`}
       >
         <div
-          className={`bg-${route}-bg relative z-10 flex-grow flex flex-col overflow-hidden`}
+          className={`bg-${route}-bg w-full h-full overflow-hidden flex flex-col relative z-10`}
         >
           <Header route={route} control={[isOpen, changeRoute]} />
+          {/* 
           <QueryClientProvider client={queryClient}>
             <PageLoadingProvider>
               <SwapPageProvider>
@@ -69,7 +70,7 @@ export default function RootLayout({
                 </CompletionProvider>
               </SwapPageProvider>
             </PageLoadingProvider>
-          </QueryClientProvider>
+          </QueryClientProvider> */}
         </div>
       </body>
     </html>

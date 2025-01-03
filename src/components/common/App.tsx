@@ -20,7 +20,7 @@ export default function App({
     };
   }, [isFetching, setPageLoading, route]);
   return (
-    <div className="h-screen hide-bars max-w-[2000px] w-full mx-auto ">
+    <div className="h-screen hide-bars max-w-screen-xl bg-blue-200 w-full mx-auto ">
       {children}
       <Footer />
     </div>
