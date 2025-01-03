@@ -2,7 +2,7 @@
 import Intro from "@/components/common/Intro";
 import ScrollIndicator from "@/components/common/Scroll";
 import { useCompletion } from "@/context/CompletionContext";
-import { motion } from "framer-motion";
+import { easeIn, motion } from "framer-motion";
 import { extendedColors } from "../../../tailwind.config";
 import { routeStatus } from "@/extras/routes";
 import Text from "@/components/common/Bold";
@@ -132,10 +132,27 @@ export default function About() {
             <Text txt="Outside of coding, I love teaching, playing with my pet **Meera** and sharing knowledge through **educational content**, **poetry**, and **blog posts** to contribute to the community. I also enjoy **mobile photography**, **watching movies**, and **cooking occasionally**, as well as participating in **volunteer activities** to support organizations in achieving their **social goals.**" />
           </div>
           <div className="hidden w-1/2 lg:flex justify-center items-center">
-            <div
+            <motion.div
+              initial={{
+                y: -50,
+                opacity: 0,
+              }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.5,
+                easeIn,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.5,
+              }}
               style={getDottedStyle(color, 2, 10)}
               className="w-4/5 h-3/5"
-            ></div>
+            ></motion.div>
           </div>
         </div>
         <div className="grid border-t-4 border-about-highlight grid-cols-1 gap-8 p-6 lg:grid-cols-2 lg:gap-12 mt-40 w-full md:max-w-screen-sm lg:max-w-screen-xl mx-auto">
