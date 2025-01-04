@@ -56,9 +56,9 @@ export default function RootLayout({
             <PageLoadingProvider>
               <SwapPageProvider>
                 <CompletionProvider>
-                  {/* <App key={route} route={route}>
+                  <App key={route} route={route}>
                     {children}
-                  </App> */}
+                  </App>
                   <PageTransition
                     isOpen={isOpen}
                     reloaded={reloaded}

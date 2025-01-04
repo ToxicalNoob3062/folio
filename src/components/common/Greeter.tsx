@@ -31,7 +31,7 @@ export default function Greeter({
         }
       }}
     >
-      <span className="loader tab:scale-125"></span>
+      <span className="loader tab:scale-125" />
     </motion.div>
   );
 }

@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import defTheme from "tailwindcss/defaultTheme";
 
 const generateSafelist = (
   colors: Record<string, Record<string, string> | string>
@@ -69,10 +68,11 @@ export default {
       },
     },
     screens: {
+      phone: "360px",
       tab: "512px",
       laptop: "1024px",
       desktop: "2024px",
-      weird: { raw: "(min-width: 1024px) and (max-height: 900px)" },
+      weird: { raw: "(min-width: 512px) and (max-height: 800px)" },
     },
   },
   safelist: generateSafelist(extendedColors),

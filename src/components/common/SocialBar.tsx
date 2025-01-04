@@ -43,22 +43,21 @@ export default function SocialBar({ route }: { route: string }) {
         delay: 0.5,
       }}
       onAnimationComplete={() => setShowSocials(true)}
-      className="flex w-full p-6 mt-8 sm:p-10 ws:p-4 sm:mt-16 ws:mt-0 items-center gap-4 sm:gap-8"
+      className="w-full flex items-center gap-2 phone:gap-4 laptop:gap-6"
     >
-      <div className={`border-t-4 border-${route}-lining w-20`}></div>
-      <div className="flex items-center gap-4 sm:gap-8">
-        {socials.map((social, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -5 }}
-            animate={showSocials ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.1, delay: showSocials ? i * 0.1 : 0 }}
-            className="w-8 h-8"
-          >
-            <Social contact={social} />
-          </motion.div>
-        ))}
-      </div>
+      <div
+        className={`hidden phone:block border-t-4 border-${route}-lining w-14`}
+      />
+      {socials.map((social, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -5 }}
+          animate={showSocials ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.1, delay: showSocials ? i * 0.1 : 0 }}
+        >
+          <Social contact={social} />
+        </motion.div>
+      ))}
     </motion.div>
   );
 }

@@ -24,6 +24,7 @@ export default function PageTransition({
     <AnimatePresence>
       <Transition key={"direct"} setReloaded={setReloaded} />
       {reloaded ? <Greeter setReloaded={setReloaded} route={route} /> : null}
+
       {isOpen ? (
         <Modal changeRoute={changeRoute} setReloaded={setReloaded} />
       ) : null}

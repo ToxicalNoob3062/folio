@@ -12,7 +12,7 @@ export default function Header({
 }) {
   const [isOpen, changeRoute] = control;
   return (
-    <div className="bg-orange-200 w-full h-20 p-6 tab:h-28 tab:p-10 flex justify-between items-center z-30 relative">
+    <div className="w-full h-20 p-6 tab:h-28 tab:p-10 flex justify-between items-center z-30 relative">
       {/* left side */}
       <div className="flex h-full items-center">
         <Img

@@ -9,7 +9,7 @@ export default function Social({ contact }: { contact: Contact }) {
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.2 }}
-        className="relative w-8 h-8"
+        className="relative w-6 h-6"
       >
         <Img
           src={`/${contact.platform}.png`}

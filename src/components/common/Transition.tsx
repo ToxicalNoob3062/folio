@@ -21,7 +21,7 @@ export default function Transition({
   return swapPage ? (
     <motion.div
       ref={scope}
-      className={`bg-${routeStatus.past}-secondary absolute top-0 left-0 w-full h-full z-30 flex justify-center items-center`}
+      className={`bg-${routeStatus.past}-secondary w-full h-full absolute top-0 left-0 z-30`}
       initial={{ top: "-100%" }}
       animate={{ top: "0%" }}
       transition={{ duration: 0.5 }}
@@ -45,6 +45,6 @@ export default function Transition({
         setSwapPage(false);
         setReloaded(true);
       }}
-    ></motion.div>
+    />
   ) : null;
 }

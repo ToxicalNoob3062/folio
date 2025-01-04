@@ -25,17 +25,17 @@ export default function NavLink({
   return (
     <motion.div
       variants={itemVariants}
-      className=" w-full flex items-baseline md:gap-24"
+      className="w-full flex items-baseline md:gap-24"
     >
       <button
-        className="w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 font-bold text-start text-5xl sm:text-6xl 2xl:text-7xl ws:text-5xl  hover:text-white"
+        className="w-52 tab:w-80 font-bold text-start text-4xl tab:text-5xl weird:text-4xl hover:text-white"
         onClick={() => {
           changeRoute(path as Route);
         }}
       >
         {path[0].toUpperCase() + path.slice(1)}
       </button>
-      <h4 className="hidden lg:block text-lg xl:text-xl 2xl:text-2xl font-wider">
+      <h4 className="hidden laptop:block text-sm">
         {routeDescription[path as Route]}
       </h4>
     </motion.div>
